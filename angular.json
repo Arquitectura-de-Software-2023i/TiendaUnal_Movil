@@ -113,6 +113,7 @@
             ],
             "styles": ["src/theme/variables.scss", 
             "node_modules/bootstrap/dist/css/bootstrap.min.css",
+            "node_modules/typeface-muli/index.css",
             "src/global.scss"],
             "scripts": []
           },

@@ -1,0 +1,90 @@
+<body>
+
+
+
+  <div class="padre">
+    <div>
+      <div style="text-align: center">
+        <img class="imagen-fondo" src="..\assets\Fondo_login.png" alt="">
+      </div>
+
+
+
+      <form action="" style="margin-top: 16%; margin-left: 7%;">
+        <div [hidden]="div_nombres">
+          <div style="text-align: center; margin-top:5%; margin-right: 7%;">
+            <h4 style="color: white;">Completa la información para crear una cuenta</h4>
+          </div>
+  
+  
+          <div>
+            <p class="letra">Nombres</p>
+            <input class="button-log" type="text">
+          </div>
+  
+          <div>
+            <p class="letra">Apellidos</p>
+            <input class="button-log" type="text">
+          </div>
+  
+          <div>
+            <p class="letra">Nombre de Usuario</p>
+            <input style="width: 70% !important;" class="button-log" type="text">
+          </div>
+  
+          <div>
+            <p class="letra">Numero de teléfono</p>
+            <input style="width: 70% !important;" class="button-log" type="text">
+          </div>
+          <button type="button" class="btn-ingreso" (click)="Name_to_city()">Siguiente</button>  
+
+        </div  >
+
+
+        <div [hidden]="div_ciudad">
+          <div>
+            <p class="letra">Ciudad</p>
+            <input style="width: 70% !important;" class="button-log" type="text">
+          </div>
+  
+  
+          <div>
+            <p class="letra">Dirección</p>
+            <input class="button-log" type="text">
+          </div>
+
+          <button type="button" (click)="City_to_pass()" class="btn-ingreso">Siguiente</button>  
+          
+         
+
+        </div>
+        
+        
+
+        <div [hidden]="div_pass">
+
+          <div>
+            <p class="letra">Contraseña</p>
+            <input style="width: 70% !important;" class="button-log" type="text">
+          </div>
+  
+  
+          <div>
+            <p class="letra">Confirma contraseña</p>
+            <input style="width: 70% !important;" class="button-log" type="text">
+          </div>
+  
+          <button type="button" class="btn-ingreso">Crear cuenta</button>  
+        </div>
+
+        
+
+      </form>
+
+      <div style="text-align: center; margin-top:5%">
+        <p style="color: white;">¿Ya tienes cuenta? <a href="/login" class="letra">Inicia sesión</a></p>
+      </div>
+    </div>
+  </div>
+
+</body>
