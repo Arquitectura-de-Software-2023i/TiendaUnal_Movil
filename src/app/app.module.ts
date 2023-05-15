@@ -15,7 +15,8 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { BarraButtonsComponent } from './barra-buttons/barra-buttons.component';
+import { PagesModule } from './Pages/pages.module';
+import { ComponentsModule } from './Components/components.module';
 
 const apolloClient = new ApolloClient({
   link: new HttpLink({ uri: 'http://localhost:5000/graphiql' }),
@@ -26,7 +27,7 @@ export default apolloClient
 
 
 @NgModule({
-  declarations: [AppComponent,BarraButtonsComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule, IonicModule,
     RouterModule.forRoot([]),
@@ -34,6 +35,8 @@ export default apolloClient
     AppRoutingModule,
     ApolloModule,
     HttpClientModule,
+    PagesModule,
+    ComponentsModule
     
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
