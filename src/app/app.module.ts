@@ -26,6 +26,7 @@ import { GraphQLModule } from './graphql.module';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
+    GraphQLModule
     
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

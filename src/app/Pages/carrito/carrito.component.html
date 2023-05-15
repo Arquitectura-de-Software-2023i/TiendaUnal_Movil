@@ -1,7 +1,13 @@
 <app-search></app-search>
-
-<p>
-  Carrito works!
-</p>
+<div style="background-color: beige;">
+<p> Carrito</p>
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="error">Error :</div>
+<div *ngIf="rates">
+  <div *ngFor="let rate of rates">
+    <p>{{ rate.idProducto_Carrito}}: {{ rate.idProducto}}</p>
+  </div>
+</div>
+</div>
 
 <app-barra-buttons></app-barra-buttons>
