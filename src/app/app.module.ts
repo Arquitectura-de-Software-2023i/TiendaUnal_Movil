@@ -26,14 +26,16 @@ export default apolloClient
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,BarraButtonsComponent],
   imports: [
     BrowserModule, IonicModule,
     RouterModule.forRoot([]),
     IonicModule.forRoot(),
     AppRoutingModule,
     ApolloModule,
-    HttpClientModule],
+    HttpClientModule,
+    
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
