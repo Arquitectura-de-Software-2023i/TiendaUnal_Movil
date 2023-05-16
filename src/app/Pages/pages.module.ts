@@ -6,6 +6,8 @@ import { RegisterComponent } from './register/register.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HomeComponent } from './home/home.component';
 import { CarritoComponent } from './carrito/carrito.component';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { RouteReuseStrategy } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,10 @@ import { CarritoComponent } from './carrito/carrito.component';
   ],
   imports: [
     CommonModule,
-    ComponentsModule
-  ]
+    ComponentsModule,
+    IonicModule
+  ],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+
 })
 export class PagesModule { }
