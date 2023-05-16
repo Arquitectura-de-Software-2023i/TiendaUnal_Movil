@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 const GET_PRODUCTO = gql`
 query getProducto($id: Int!){
   productById(id: $id){
+    idProducto
     nombre
     precio
     descripcion
@@ -31,6 +32,16 @@ const GET_PRODUCTOS_BY_CARRITO = gql`
 }
 `;
 
+const DELETE_PRODUCTOS_BY_CARRITO = gql`
+  mutation  getProductosCarritoById($id: Int!, $carrito: CantidadInput!) {
+  deleteByIdProductoDelCarrito(id: id, carrito: carrito){
+    idProducto
+    precio
+    cantProducto
+  }
+}
+`;
+
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
@@ -45,7 +56,7 @@ export class CarritoComponent  implements OnInit {
   cantidadItems: any[];
   
   constructor(private apollo: Apollo) {}
- 
+
   ngOnInit() {
     this.apollo
       .watchQuery({
@@ -82,10 +93,30 @@ export class CarritoComponent  implements OnInit {
                   this.cartItems.push(newItem);
                   this.loading = result.loading;
                   this.error = result.error;
+                  
                 });
             });
             
           });
       });
+    
+  }
+
+  // Llamada a la mutación
+  eliminar_producto_de_carrito() {
+    console.log("eliminanddddioooooooooooo");
+    
   }
 }
+
+// this.apollo
+//   .mutate({
+//     mutation: DELETE_PRODUCTOS_BY_CARRITO,
+//     variables: {
+//       id: id,
+//       carrito: { idCarrito: this.cartId } //
+//     },
+//   })
+//   .subscribe((result) => {
+//     console.log(result);
+//   });
