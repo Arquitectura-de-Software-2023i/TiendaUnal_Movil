@@ -10,7 +10,8 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { BarraButtonsComponent } from './barra-buttons/barra-buttons.component';
+import { PagesModule } from './Pages/pages.module';
+import { ComponentsModule } from './Components/components.module';
 import { GraphQLModule } from './graphql.module';
 
 
@@ -18,14 +19,13 @@ import { GraphQLModule } from './graphql.module';
 
 
 @NgModule({
-  declarations: [AppComponent,BarraButtonsComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule, IonicModule,
     RouterModule.forRoot([]),
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    GraphQLModule,
     
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
