@@ -1,5 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { Apollo, gql } from 'apollo-angular';
+
+const GET_PRODUCTOS = gql`
+  query {
+    allProducts{
+      nombre
+      precio
+      descripcion
+      imagen
+
+    }
+  }
+`;
+
 
 @Component({
   selector: 'app-home',
@@ -8,8 +22,17 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 })
 export class HomeComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private apollo: Apollo) { }
+  Products: any[] = [];
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.apollo.watchQuery({
+      query: GET_PRODUCTOS,
+    }).valueChanges.subscribe((result: any) => {
+      const products = result.data?.allProducts;
+      this.Products=products;
+      console.log(this.Products)
+    });
+  }
 
 }

@@ -1,0 +1,35 @@
+.imagen-fondo{
+    width: 150px;
+    height: 150px;
+    border-radius: 25px;
+
+    -webkit-box-shadow: 2px 11px 21px -4px rgba(61,61,61,0.44);
+    -moz-box-shadow: 2px 11px 21px -4px rgba(61,61,61,0.44);
+    box-shadow: 2px 11px 21px -4px rgba(61,61,61,0.44);
+
+}
+
+.div-imagen{
+    background-color: #4C015D;
+    color: white;
+    margin-top: 7%;
+    border-radius: 20px;
+    margin: 10%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 6px 15px -6px rgba(0,0,0,0.69);
+    -webkit-box-shadow: 0px 6px 15px -6px rgba(0,0,0,0.69);
+    -moz-box-shadow: 0px 6px 15px -6px rgba(0,0,0,0.69);
+}
+
+.nombre {
+    text-align: left;
+    font-size: medium;
+    font-weight: bold;
+
+}
+
+.precio {
+    text-align: left;
+    font-size: x-small;
+}
