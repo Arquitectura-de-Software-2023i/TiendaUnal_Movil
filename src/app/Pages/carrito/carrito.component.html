@@ -1,22 +1,33 @@
 <app-search></app-search>
 
-<ion-content>
-  <ion-list>
+<ion-content >
+  <ion-list >
     <div *ngIf="loading">Loading...</div>
     <div *ngIf="error">Error :</div>
-    <div *ngIf="cartItems">
-      <ion-item *ngFor="let item of cartItems; let i = index">
+    <div *ngIf="cartItems" >
+      <ion-item *ngFor="let item of cartItems; let i = index" class="items" >
         <ion-thumbnail slot="start">
           <img [src]="item.image" alt="Product Image">
         </ion-thumbnail>
         <ion-label>
           <h2>{{ item.nombre }}</h2>
-          <p>Cantidad: {{ cantidadItems[i]}}</p>
+          <p> {{ item.descripcion}}</p>
           <p>Precio: {{ cantidadItems[i] * item.precio}}</p>
         </ion-label>
-        <ion-button >
-          Eliminar
-        </ion-button>
+        <ion-buttons color="primary" slot="end">
+          <ion-button (click)="eliminar_producto_de_carrito()">
+            <ion-icon name="remove"></ion-icon>
+          </ion-button>
+          <ion-button (click)="eliminar_producto_de_carrito()">
+            {{ cantidadItems[i] }}
+          </ion-button>
+          <ion-button (click)="eliminar_producto_de_carrito()">
+            <ion-icon name="add"></ion-icon>
+          </ion-button>
+          <ion-button (click)="eliminar_producto_de_carrito()">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </ion-buttons>
       </ion-item>
     </div>
   </ion-list>
@@ -27,13 +38,6 @@
 
 <app-barra-buttons></app-barra-buttons>
 
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Carrito de compras
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <!-- <ion-content>
   <ion-list>
