@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HomeComponent } from './home/home.component';
 import { CarritoComponent } from './carrito/carrito.component';
+import { IonicModule } from '@ionic/angular'; // Importa el módulo de Ionic aquí
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CarritoComponent } from './carrito/carrito.component';
   ],
   imports: [
     CommonModule,
-    ComponentsModule
+    ComponentsModule,
+    IonicModule
   ]
 })
 export class PagesModule { }
