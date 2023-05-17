@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ComponentsModule } from '../Components/components.module';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from '../app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -27,6 +28,7 @@ import { ProductoComponent } from './producto/producto.component';
     ComponentsModule,
     IonicModule,
     AppRoutingModule,
+    FormsModule
     
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

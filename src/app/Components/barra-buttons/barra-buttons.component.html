@@ -4,21 +4,21 @@
 <ion-tabs> 
   <ion-router-outlet></ion-router-outlet>
 
-  <ion-tab-bar  slot="bottom">
+  <ion-tab-bar  style="height: 60px;" slot="bottom">
     <ion-tab-button>
-      <ion-icon name="menu-outline"></ion-icon>
+      <ion-icon style="font-size: 6em;"  name="menu-outline"></ion-icon>
     </ion-tab-button>
     <ion-tab-button [routerLink]="['/home']">
-      <ion-icon [routerLinkActive]="['activo']" name="storefront-outline"></ion-icon>
+      <ion-icon style="font-size: 6em;" [routerLinkActive]="['activo']" name="storefront-outline"></ion-icon>
     </ion-tab-button>
 
  
       <ion-tab-button  [routerLink]="['/carrito']"  >
-        <ion-icon [routerLinkActive]="['activo']" name="cart-outline"></ion-icon>
+        <ion-icon style="font-size: 6em;"  [routerLinkActive]="['activo']" name="cart-outline"></ion-icon>
       </ion-tab-button>
     
     <ion-tab-button [routerLink]="['/user-profile']" >
-      <ion-icon [routerLinkActive]="['activo']" name="person-outline"></ion-icon>
+      <ion-icon style="font-size: 6em;"  [routerLinkActive]="['activo']" name="person-outline"></ion-icon>
     </ion-tab-button>
   </ion-tab-bar>
   

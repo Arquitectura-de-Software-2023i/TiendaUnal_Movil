@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { userInfo } from 'os';
+
+interface user  {
+  user: string  
+  password: string
+
+}
 
 @Component({
   selector: 'app-login',
@@ -8,12 +15,19 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent  implements OnInit {
   Message: any[];
 
+  usuario: user = {
+    user: '',
+    password: ''
+  }
+  
   constructor() { }
 
   ngOnInit() {
-    // this.apollo.query({ query: GET_MESAGGE }).subscribe(result => {
-    //   this.Message = result.data['allMessage'] as any;
-    // });
+    
+  }
+
+  login(){
+    console.log(this.usuario)
   }
 
 }

@@ -3,18 +3,29 @@ import { ActivatedRoute } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
-const GET_CARRITO_BY_ID = gql`
-query {
-  productById(id: 1){
+const GET_PRODUCTO_BY_ID = gql`
+query getProducto($id: Int!){
+  productById(id: $id){
     idProducto
     nombre
     precio
     descripcion
     imagen
-
   }
 }
 `;
+
+const GET_CARRITO_BY_ID_USER = gql`
+query {
+  carritoByIdUsuario(idusuario: 5){ 
+    idCarrito
+    idUsuario
+    totalprecio
+    totalproductos
+  }
+}
+`;
+
 
 interface Producto  {
     idProducto?: number
@@ -24,6 +35,7 @@ interface Producto  {
     imagen?: string
 
 }
+
 
 @Component({
   selector: 'app-producto',
@@ -35,6 +47,9 @@ export class ProductoComponent  implements OnInit {
   parametro: any;
   param: number
   producto?: Producto;
+  add_to_carrito: any = []
+  list_add : any = {}
+  cantidad: number = 0
  
   constructor(public apollo: Apollo, private route: ActivatedRoute) { }
  
@@ -48,7 +63,7 @@ export class ProductoComponent  implements OnInit {
 
     
   this.apollo.watchQuery({
-    query: GET_CARRITO_BY_ID,
+    query: GET_PRODUCTO_BY_ID,
     variables: {
       id: this.param
     }
@@ -61,5 +76,10 @@ export class ProductoComponent  implements OnInit {
 
   }
 
+  add_cart(){
+
+
+
+  }
 
 }
