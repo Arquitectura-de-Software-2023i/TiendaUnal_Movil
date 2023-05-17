@@ -1,6 +1,40 @@
+<!-- 
+<app-search></app-search> 
+
+ -->
+
+
 <ion-content>
-<body>
+    <body style="background-color: #D9D9D9;">
+        <h1 style="margin: 4%;">Articulo: {{producto?.nombre}}</h1>
+        <ion-card style="text-align: center">
+            <img  alt="Silhouette of mountains" style="width: 70%; text-align: center;" src="..\assets\images.png" />
+            <ion-card-header style="text-align: left;">
+              <ion-card-title>${{producto?.precio}}</ion-card-title>
+              <ion-card-subtitle>{{producto?.nombre}}</ion-card-subtitle>
+            </ion-card-header>
+            
+            <ion-card-content style="text-align: left;">
+
+            <h5>Descripción:</h5>
+
+              {{producto?.descripcion}}
+              
+            </ion-card-content>
+            
+          </ion-card>
+          
+          <ion-button style="--background: #FFA800; margin:4%" expand="block">
+            <ion-icon name="cart-outline"></ion-icon>
+            Agregar al carrito
+          </ion-button>
+
+
+   
+         
   
+    </body>
+    <!-- <app-barra-buttons></app-barra-buttons> -->
+
+  </ion-content>
   
-</body>
-</ion-content>

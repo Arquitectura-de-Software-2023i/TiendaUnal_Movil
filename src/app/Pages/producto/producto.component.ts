@@ -16,6 +16,15 @@ query {
 }
 `;
 
+interface Producto  {
+    idProducto?: number
+    nombre?: string
+    precio?: number
+    descripcion?: string
+    imagen?: string
+
+}
+
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.component.html',
@@ -25,7 +34,7 @@ export class ProductoComponent  implements OnInit {
  
   parametro: any;
   param: number
-  producto: any[] = [];
+  producto?: Producto;
  
   constructor(public apollo: Apollo, private route: ActivatedRoute) { }
  
@@ -44,7 +53,7 @@ export class ProductoComponent  implements OnInit {
       id: this.param
     }
   }).valueChanges.subscribe((result: any) => {
-    const product = result.data.productById;
+    const product = result.data?.productById;
     this.producto=product;
     console.log(this.producto)
   });
