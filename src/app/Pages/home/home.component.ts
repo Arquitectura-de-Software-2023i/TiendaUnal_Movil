@@ -5,6 +5,7 @@ import { Apollo, gql } from 'apollo-angular';
 const GET_PRODUCTOS = gql`
   query {
     allProducts{
+      idProducto
       nombre
       precio
       descripcion
@@ -33,6 +34,10 @@ export class HomeComponent  implements OnInit {
       this.Products=products;
       console.log(this.Products)
     });
+  }
+
+  rico() {
+    console.log("AAAAAAAAAAAA")
   }
 
 }
