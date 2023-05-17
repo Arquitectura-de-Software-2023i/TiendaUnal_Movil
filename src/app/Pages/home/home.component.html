@@ -1,5 +1,5 @@
-
-<app-search></app-search>
+<!-- 
+<app-search></app-search> -->
 <ion-content>
   <body style="background-color: #D9D9D9;">
     <ion-grid>
@@ -8,19 +8,24 @@
         
           <div style="text-align: center">
             <div>
-              <img class="imagen-fondo" src="..\assets\images.png" alt="">
+              <a [routerLink]="['/producto', prod.idProducto]" >
+                <img class="imagen-fondo" src="..\assets\images.png" alt="">
+              </a>
             </div>
             
-            <div class="div-imagen">
+            <div  class="div-imagen">
               <span class="nombre">{{prod.nombre}}</span>
               <span class="precio">${{prod.precio}}</span>
+
             </div>
+
           </div>
         </ion-col>
         
 
       </ion-row>
     </ion-grid>
+    <!-- <app-barra-buttons></app-barra-buttons> -->
+
   </body>
 </ion-content>
-<app-barra-buttons></app-barra-buttons>
