@@ -13,7 +13,7 @@
     background-color: #4C015D;
     color: white;
     margin-top: 7%;
-    border-radius: 20px;
+    border-radius: 15px;
     margin: 10%;
     display: flex;
     flex-direction: column;
@@ -26,10 +26,13 @@
     text-align: left;
     font-size: medium;
     font-weight: bold;
-
+    padding-left : 10%;
 }
 
 .precio {
     text-align: left;
     font-size: x-small;
+    padding-left : 10%;
+    margin-bottom: 3%;
+
 }

@@ -4,20 +4,20 @@
             <div style="text-align: center">
                 <img class="imagen-fondo" src="..\assets\Fondo_login.png" alt="">
             </div>
-            <form action="" style="margin-top: 16%; ">
+            <form metod="post" action="" style="margin-top: 16%; ">
     
                 <div>
-                    <p class="letra" style="margin-left: 10%; ">Usuario</p>
-                    <input class="button-log" placeholder="Usuario@Unal.edu.co" type="text">
+                    <p class="letra" style="margin-left: 10%; " >Usuario</p>
+                    <input style="padding: 20px;" name="username" id = "username" [(ngModel)]="usuario.user" class="button-log" placeholder="Usuario@Unal.edu.co" type="text">
                 </div>
     
                 <div>
-                    <p class="letra"  style="margin-left: 10%; ">Contraseña</p>
-                    <input class="button-log" placeholder="***********" type="password">
+                    <p class="letra"  style="margin-left: 10%; " >Contraseña</p>
+                    <input style="padding: 20px;" name="password" id = "password" [(ngModel)]="usuario.password" class="button-log" placeholder="***********" type="password">
                 </div>
                 
-                <button type="button" class="btn-ingreso">Ingresar</button>
-    
+                <input (click)="login()" type="submit"class="btn-ingreso" value="Ingresar">
+                
     
             </form>
     
