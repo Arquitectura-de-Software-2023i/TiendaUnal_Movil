@@ -1,66 +1,66 @@
-<app-search></app-search>
 
 <ion-content >
-  <ion-list >
     <div *ngIf="loading">Loading...</div>
     <div *ngIf="error">Error :</div>
     <div *ngIf="cartItems" >
-      <ion-item *ngFor="let item of cartItems; let i = index" class="items" >
-        <ion-thumbnail slot="start">
-          <img [src]="item.image" alt="Product Image">
-        </ion-thumbnail>
-        <ion-label>
-          <h2>{{ item.nombre }}</h2>
-          <p> {{ item.descripcion}}</p>
-          <p>Precio: {{ cantidadItems[i] * item.precio}}</p>
-        </ion-label>
-        <ion-buttons color="primary" slot="end">
-          <ion-button (click)="eliminar_producto_de_carrito()">
-            <ion-icon name="remove"></ion-icon>
-          </ion-button>
-          <ion-button (click)="eliminar_producto_de_carrito()">
-            {{ cantidadItems[i] }}
-          </ion-button>
-          <ion-button (click)="eliminar_producto_de_carrito()">
-            <ion-icon name="add"></ion-icon>
-          </ion-button>
-          <ion-button (click)="eliminar_producto_de_carrito()">
+      <ion-item-sliding *ngFor="let item of cartItems; let i = index" class="items" >
+        <ion-item class="caja" >     
+          <ion-thumbnail slot="start">
+            <img  src="../../../assets/images.png">
+          </ion-thumbnail>
+          <ion-label>
+            <h2>{{ item.nombre }}</h2>
+            <p> {{ item.descripcion}}</p>
+            <p>Precio: {{ cantidadItems[i] * item.precio}}</p>
+          </ion-label>
+          <ion-label slot="end" class="botones">
+
+            <ion-button class="boton" (click)="eliminar_producto_de_carrito()">
+              <ion-icon name="remove"></ion-icon>
+            </ion-button>
+            <ion-button (click)="eliminar_producto_de_carrito()">
+              {{ cantidadItems[i] }}
+            </ion-button>
+            <ion-button (click)="eliminar_producto_de_carrito()">
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+          </ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="danger" expandable>
             <ion-icon name="trash"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-item>
-    </div>
-  </ion-list>
-
-
-  
+          </ion-item-option>
+        </ion-item-options>
+          <!-- <ion-button class="cantidad" color="black"slot="end">
+              <ion-button class="boton" (click)="eliminar_producto_de_carrito()">
+                <ion-icon name="remove"></ion-icon>
+              </ion-button>
+              <ion-button (click)="eliminar_producto_de_carrito()">
+                {{ cantidadItems[i] }}
+              </ion-button>
+              <ion-button (click)="eliminar_producto_de_carrito()">
+                <ion-icon name="add"></ion-icon>
+              </ion-button>
+              <ion-button (click)="eliminar_producto_de_carrito()">
+                <ion-icon name="trash"></ion-icon>
+              </ion-button>
+            </ion-button> -->
+        
+      </ion-item-sliding >
+    </div> 
 </ion-content>
 
-<app-barra-buttons></app-barra-buttons>
-
-
-<!-- <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of cartItems">
-      <ion-thumbnail slot="start">
-        <img [src]="item.image" alt="Product Image">
-      </ion-thumbnail>
-      <ion-text>
-        <h2>{{ item.name }}</h2>
-        <p>Precio: {{ item.price }}</p>
-        <p>Cantidad: {{ item.quantity }}</p>
-      </ion-text>
-      <ion-button slot="end" (click)="removeFromCart(item)">
-        Eliminar
-      </ion-button>
-    </ion-item>
-  </ion-list>
-
-  <div *ngIf="cartItems.length === 0" class="empty-cart-message">
-    No hay productos en el carrito.
+<!-- <div class="prueba">
+  <div>
+    <ion-thumbnail slot="start">
+      <img  src="../../../assets/images.png">
+    </ion-thumbnail>
   </div>
-
-  <ion-button expand="full" (click)="checkout()" [disabled]="cartItems.length === 0">
-    Pagar
-  </ion-button>
-</ion-content> -->
+  <div>
+    <ion-label>
+      <h2>{{ item.nombre }}</h2>
+      <p> {{ item.descripcion}}</p>
+      <p>Precio: {{ cantidadItems[i] * item.precio}}</p>
+    </ion-label>
+  </div>
+<div> -->
