@@ -3,10 +3,7 @@
     --ion-color-primary: #4C015D;
     text-align: right;
     height: 30px;
-    width: 30px;
-    --border-radius: 50%;
     --padding:none;
-    --font-size: 30px;
 }
 .cantidad {
     --ion-color-primary: transparent;
@@ -38,7 +35,6 @@ ion-content {
     align-items: center;
     padding: 10px;
     background-color: #FFFFFF;
-    margin: 10px;
     border-radius: 20px;
     box-shadow: #000000;
     
@@ -47,10 +43,12 @@ ion-content {
     background-color: transparent;
     border:none;
     padding: 5px;
+    width: 100%;
     --inner-padding-end: 0px;
     --inner-background-color: #FFFFFF;
     --highlight-height: 0px;
     --inner-border-width:0px;
+    
 }
 
 ion-label{
@@ -83,5 +81,17 @@ h2{
 }
 
 
-
+.afuera-items{
+    background-color: #FFFFFF;
+    margin: 10px;
+    padding: 0px;
+    --inner-padding-end: 0px;
+    --inner-background-color: #FFFFFF;
+    --highlight-height: 0px;
+    --inner-border-width:0px;
+    border-radius: 20px;
+}
+.ion-col{
+    --ion-size: 6;
+}
   
