@@ -1,12 +1,13 @@
+<app-search></app-search>
 
 <ion-content >
-    <div *ngIf="loading">Loading...</div>
+    <div *ngIf="loading"><ion-loading trigger="open-loading" message="Dismissing after 3 seconds..." duration="3000"></ion-loading></div>
     <div *ngIf="error">Error :</div>
     <div *ngIf="cartItems" >
       <ion-item *ngFor="let item of cartItems; let i = index"  class="afuera-items">
         <ion-item-sliding class="items">
           <ion-item class="caja" >    
-            <ion-thumbnail slot="start" >
+            <ion-thumbnail class="cont-imagen"  slot="start" >
               <img class="imagen"  src="../../../assets/images.png">
             </ion-thumbnail>
             
@@ -16,16 +17,15 @@
               <p>Precio: {{ cantidadItems[i] * item.precio}}</p>
             </ion-label>
             <ion-label slot="end" class="botones">
-
-             <ion-button class="signo" (click)="eliminar_producto_de_carrito()">
-                <ion-icon slot="icon-only" style="font-size: 1000px;"  name="remove"></ion-icon>
+              <ion-button shape="round" class="signo-button">
+                <ion-icon slot="icon-only"  class="signo" name="remove"></ion-icon>
               </ion-button>
             
-              <ion-button class="cantidad" (click)="eliminar_producto_de_carrito()">
+              <ion-button class="cantidad" (click)="eliminar_producto_de_carrito(item.idProducto)">
                 {{ cantidadItems[i] }}
               </ion-button>
-              <ion-button shape="round" class="signo" (click)="eliminar_producto_de_carrito()">
-                <ion-icon slot="icon-only" name="add"></ion-icon>
+              <ion-button shape="round" class="signo-button" (click)="eliminar_producto_de_carrito(item.idProducto)">
+                <ion-icon slot="icon-only" class="signo" name="add"></ion-icon>
               </ion-button>
             </ion-label>
           </ion-item>
@@ -36,20 +36,21 @@
           </ion-item-options>     
         </ion-item-sliding >
       </ion-item>
-    </div> 
+    </div>
+    <div class="bottom-button-container">
+      <ion-button class="pagar" expand="block">
+        <div class="total-corner" style="width: 100%;">
+          Total:
+          ${{ total }}
+
+        </div>
+        <div class="wallet" style="width: 100%;">
+          <ion-icon name="wallet"></ion-icon>
+          Ir a pagar
+        </div>
+      </ion-button>
+    </div>
 </ion-content>
 
-<!-- <div class="prueba">
-  <div>
-    <ion-thumbnail slot="start">
-      <img  src="../../../assets/images.png">
-    </ion-thumbnail>
-  </div>
-  <div>
-    <ion-label>
-      <h2>{{ item.nombre }}</h2>
-      <p> {{ item.descripcion}}</p>
-      <p>Precio: {{ cantidadItems[i] * item.precio}}</p>
-    </ion-label>
-  </div>
-<div> -->
+<app-barra-buttons></app-barra-buttons>
+

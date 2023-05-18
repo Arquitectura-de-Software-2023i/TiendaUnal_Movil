@@ -33,14 +33,34 @@ const GET_PRODUCTOS_BY_CARRITO = gql`
 `;
 
 const DELETE_PRODUCTOS_BY_CARRITO = gql`
-  mutation  getProductosCarritoById($id: Int!, $carrito: CantidadInput!) {
-  deleteByIdProductoDelCarrito(id: id, carrito: carrito){
+  mutation  getProductosCarritoById($idProducto: Int!, $carrito: CantidadInput!) {
+  deleteByIdProductoDelCarrito(id: $idProducto, carrito: $carrito){
     idProducto
     precio
     cantProducto
   }
 }
 `;
+
+const DELETE_CANTIDAD_PRODUCTOS_BY_CARRITO = gql`
+  mutation  getProductosCarritoById($idProducto: Int!, $carrito: CantidadInput!) {
+  deleteCantidadProductoCarrito(id:$idProducto,cantidad: 1, carrito:{ idCarrito:1 }){
+    idProducto
+    precio
+    cantProducto
+  }
+}
+`;
+const CREATE_CANTIDAD_PRODUCTOS_BY_CARRITO = gql`
+  mutation  getProductosCarritoById($idProducto: Int!, $carrito: CantidadInput!) {
+  deleteCantidadProductoCarrito(id:$idProducto,cantidad: 1, carrito:{ idCarrito:1 }){
+    idProducto
+    precio
+    cantProducto
+  }
+}
+`;
+
 
 @Component({
   selector: 'app-carrito',
@@ -54,6 +74,7 @@ export class CarritoComponent  implements OnInit {
   loading = true;
   error: any;
   cantidadItems: any[];
+  total: number;
   
   constructor(private apollo: Apollo) {}
 
@@ -64,6 +85,7 @@ export class CarritoComponent  implements OnInit {
       })
       .valueChanges.subscribe((result: any) => {
         this.cartId = result.data?.carritoByIdUsuario[0].idCarrito;
+        this.total = result.data?.carritoByIdUsuario[0].totalprecio.toLocaleString();
 
         this.apollo
           .watchQuery({
@@ -103,20 +125,48 @@ export class CarritoComponent  implements OnInit {
   }
 
   // Llamada a la mutación
-  eliminar_producto_de_carrito() {
+  eliminar_producto_de_carrito(id: number) {
     console.log("eliminanddddioooooooooooo");
-    
+    this.apollo
+      .mutate({
+        mutation: DELETE_PRODUCTOS_BY_CARRITO,
+        variables: {
+          id: id,
+          carrito: { idCarrito: this.cartId } //
+        },
+      })
+      .subscribe((result) => {
+        console.log(result);
+      });
   }
+  reducir_producto_de_carrito(id: number) {
+    console.log("eliminanddddioooooooooooo");
+    this.apollo
+      .mutate({
+        mutation: DELETE_PRODUCTOS_BY_CARRITO,
+        variables: {
+          id: id,
+          carrito: { idCarrito: this.cartId } //
+        },
+      })
+      .subscribe((result) => {
+        console.log(result);
+      });
+  }
+  aumentar_producto_de_carrito(id: number) {
+    console.log("eliminanddddioooooooooooo");
+    this.apollo
+      .mutate({
+        mutation: DELETE_PRODUCTOS_BY_CARRITO,
+        variables: {
+          id: id,
+          carrito: { idCarrito: this.cartId } //
+        },
+      })
+      .subscribe((result) => {
+        console.log(result);
+      });
+  }
+
 }
 
-// this.apollo
-//   .mutate({
-//     mutation: DELETE_PRODUCTOS_BY_CARRITO,
-//     variables: {
-//       id: id,
-//       carrito: { idCarrito: this.cartId } //
-//     },
-//   })
-//   .subscribe((result) => {
-//     console.log(result);
-//   });
