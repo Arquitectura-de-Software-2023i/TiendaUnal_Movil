@@ -25,9 +25,9 @@ const GET_CARRITO_BY_USUARIO = gql`
 }
 `;
 
-const CREATE_PRODUCT_CARRITO = gql`
-  MUTACION!
-`;
+// const CREATE_PRODUCT_CARRITO = gql`
+//   MUTACION!
+// `;
 
 interface Producto {
   idProducto?: number
@@ -79,30 +79,30 @@ export class ProductoComponent implements OnInit {
 
   }
 
-  add_cart() {
+  // add_cart() {
 
-    this.apollo.watchQuery({
-      query: GET_CARRITO_BY_USUARIO,
-    }).valueChanges.subscribe((result: any) => {
+  //   this.apollo.watchQuery({
+  //     query: GET_CARRITO_BY_USUARIO,
+  //   }).valueChanges.subscribe((result: any) => {
 
-      this.cartId = result.data?.carritoByIdUsuario[0].idcarrito;
+  //     this.cartId = result.data?.carritoByIdUsuario[0].idcarrito;
 
-      // this.apollo
-      //   .mutate({
-      //     mutation: DELETE_PRODUCTOS_BY_CARRITO,
-      //     variables: {
-      //       id: id,
-      //       carrito: { idCarrito: this.cartId } //
-      //     },
-      //   })
-      //   .subscribe((result) => {
-      //     console.log(result);
-      //   });
-
-
-    })
+  //     // this.apollo
+  //     //   .mutate({
+  //     //     mutation: DELETE_PRODUCTOS_BY_CARRITO,
+  //     //     variables: {
+  //     //       id: id,
+  //     //       carrito: { idCarrito: this.cartId } //
+  //     //     },
+  //     //   })
+  //     //   .subscribe((result) => {
+  //     //     console.log(result);
+  //     //   });
 
 
-  }
+  //   })
+
+
+  // }
 
 }
