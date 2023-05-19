@@ -1,5 +1,6 @@
 import { Apollo, gql } from 'apollo-angular';
 import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef } from '@angular/core';
 
 const GET_PRODUCTO = gql`
 query getProducto($id: Int!){
@@ -104,9 +105,10 @@ export class CarritoComponent  implements OnInit {
   loading = true;
   error: any;
   cantidadItems: any[];
-  total: number;
+  total: String;
+  total_numero: number;
   
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo, private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.apollo
@@ -115,7 +117,6 @@ export class CarritoComponent  implements OnInit {
       })
       .valueChanges.subscribe((result: any) => {
         this.cartId = result.data?.carritoByIdUsuario[0].idCarrito;
-        this.total = result.data?.carritoByIdUsuario[0].totalprecio.toLocaleString();
 
         this.apollo
           .watchQuery({
@@ -132,7 +133,6 @@ export class CarritoComponent  implements OnInit {
               (item: any) => item.cantProducto
             );
             console.log(this.idItems);
-            console.log(this.cantidadItems);
 
             this.idItems.forEach((itemId: any) => {
               this.apollo
@@ -147,18 +147,17 @@ export class CarritoComponent  implements OnInit {
                   this.cartItems.push(newItem);
                   this.loading = result.loading;
                   this.error = result.error;
-                  
+                  this.calcularTotalCarrito();
                 });
             });
             
           });
       });
-    console.log(this.cartItems);
     
   }
 
   // Llamada a la mutación
-  eliminar_producto_de_carrito(id: number) {
+  eliminar_producto_de_carrito(id: number, i: number) {
     console.log("eliminanddddioooooooooooo");
     this.apollo
       .mutate({
@@ -171,9 +170,12 @@ export class CarritoComponent  implements OnInit {
       .subscribe((result) => {
         console.log(result);
       });
-    window.location.reload();
+    if (this.cartItems.length > i) {
+      this.cartItems.splice(i, 1); // Elimina el elemento en el índice especificado
+    }
+    this.changeDetectorRef.detectChanges();
   }
-  reducir_producto_de_carrito(id: number) {
+  reducir_producto_de_carrito(id: number, i: number) {
     console.log("restaaaaaaaaaaaaaa");
     this.apollo
       .mutate({
@@ -186,9 +188,11 @@ export class CarritoComponent  implements OnInit {
       .subscribe((result) => {
         console.log(result);
       });
-     //window.location.reload();
+    this.cantidadItems[i]--;
+    this.calcularTotalCarrito();
+    this.changeDetectorRef.detectChanges();
   }
-  aumentar_producto_de_carrito(id: number) {
+  aumentar_producto_de_carrito(id: number,i:number) {
     console.log("sumaaaaaaa");
     this.apollo
       .mutate({
@@ -207,7 +211,10 @@ export class CarritoComponent  implements OnInit {
         console.log(result);
         
       });
-    window.location.reload();
+    this.cantidadItems[i]++;
+    this.calcularTotalCarrito();
+    this.changeDetectorRef.detectChanges();
+    
   }
   pagar_carrito() {
     console.log("enviiiooooooooooooo");
@@ -215,9 +222,7 @@ export class CarritoComponent  implements OnInit {
       .mutate({
         mutation: CREATE_ENVIO,
         variables: {
-          productocarrito:{
-            id_cliente:1
-          }
+          id_cliente:6
         }
         ,
       })
@@ -245,7 +250,7 @@ export class CarritoComponent  implements OnInit {
         variables: {
           transaccion:{idCarrito:6, // CAMBIAR POR --->this.cartId
             estadoTransaccion:"Aceptada",
-            pagoTotal:this.total} 
+            pagoTotal:this.total_numero} 
         }
         ,
       })
@@ -254,6 +259,14 @@ export class CarritoComponent  implements OnInit {
         
       });
     window.location.reload();
+  }
+
+  calcularTotalCarrito() {
+    this.total_numero = 0; // Reinicializa el total a 0
+    for (let i = 0; i < this.cartItems.length; i++) {
+      this.total_numero += this.cantidadItems[i] * this.cartItems[i].precio;
+    }
+    this.total = this.total_numero.toLocaleString();
   }
   
   
