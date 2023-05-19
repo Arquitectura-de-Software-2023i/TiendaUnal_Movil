@@ -1,7 +1,7 @@
 <app-search></app-search>
 
 <ion-content >
-    <div *ngIf="loading"><ion-loading trigger="open-loading" message="Dismissing after 3 seconds..." duration="3000"></ion-loading></div>
+    <div *ngIf="loading">Loading.....</div>
     <div *ngIf="error">Error :</div>
     <div *ngIf="cartItems" >
       <ion-item *ngFor="let item of cartItems; let i = index"  class="afuera-items">
@@ -16,21 +16,21 @@
               <p> {{ item.descripcion}}</p>
               <p>Precio: {{ cantidadItems[i] * item.precio}}</p>
             </ion-label>
-            <ion-label slot="end" class="botones">
-              <ion-button shape="round" class="signo-button">
+            <ion-label slot="end" class="botones" >
+              <ion-button shape="round" class="signo-button" (click)="reducir_producto_de_carrito(item.idProducto)">
                 <ion-icon slot="icon-only"  class="signo" name="remove"></ion-icon>
               </ion-button>
             
-              <ion-button class="cantidad" (click)="eliminar_producto_de_carrito(item.idProducto)">
+              <ion-button class="cantidad">
                 {{ cantidadItems[i] }}
               </ion-button>
-              <ion-button shape="round" class="signo-button" (click)="eliminar_producto_de_carrito(item.idProducto)">
+              <ion-button shape="round" class="signo-button" (click)="aumentar_producto_de_carrito(item.idProducto)">
                 <ion-icon slot="icon-only" class="signo" name="add"></ion-icon>
               </ion-button>
             </ion-label>
           </ion-item>
           <ion-item-options side="end">
-            <ion-item-option color="danger" expandable>
+            <ion-item-option color="danger" expandable (click)="eliminar_producto_de_carrito(item.idProducto)">
               <ion-icon style="font-size: 2em;" name="trash"></ion-icon>
             </ion-item-option>
           </ion-item-options>     

@@ -44,7 +44,7 @@ const DELETE_PRODUCTOS_BY_CARRITO = gql`
 
 const DELETE_CANTIDAD_PRODUCTOS_BY_CARRITO = gql`
   mutation  getProductosCarritoById($idProducto: Int!, $carrito: CantidadInput!) {
-  deleteCantidadProductoCarrito(id:$idProducto,cantidad: 1, carrito:{ idCarrito:1 }){
+  deleteCantidadProductoCarrito(id:$idProducto, cantidad: 1, carrito:$carrito){
     idProducto
     precio
     cantProducto
@@ -52,8 +52,8 @@ const DELETE_CANTIDAD_PRODUCTOS_BY_CARRITO = gql`
 }
 `;
 const CREATE_CANTIDAD_PRODUCTOS_BY_CARRITO = gql`
-  mutation  getProductosCarritoById($idProducto: Int!, $carrito: CantidadInput!) {
-  deleteCantidadProductoCarrito(id:$idProducto,cantidad: 1, carrito:{ idCarrito:1 }){
+mutation getcreateProductosCarrito($productocarrito: ProductocarritoInput!)  {
+  createProductoCarrito(productocarrito:$productocarrito){ 
     idProducto
     precio
     cantProducto
@@ -140,12 +140,12 @@ export class CarritoComponent  implements OnInit {
       });
   }
   reducir_producto_de_carrito(id: number) {
-    console.log("eliminanddddioooooooooooo");
+    console.log("restaaaaaaaaaaaaaa");
     this.apollo
       .mutate({
-        mutation: DELETE_PRODUCTOS_BY_CARRITO,
+        mutation: DELETE_CANTIDAD_PRODUCTOS_BY_CARRITO,
         variables: {
-          id: id,
+          idProducto: id,
           carrito: { idCarrito: this.cartId } //
         },
       })
@@ -154,17 +154,23 @@ export class CarritoComponent  implements OnInit {
       });
   }
   aumentar_producto_de_carrito(id: number) {
-    console.log("eliminanddddioooooooooooo");
+    console.log("sumaaaaaaa");
     this.apollo
       .mutate({
-        mutation: DELETE_PRODUCTOS_BY_CARRITO,
+        mutation: CREATE_CANTIDAD_PRODUCTOS_BY_CARRITO,
         variables: {
-          id: id,
-          carrito: { idCarrito: this.cartId } //
-        },
+          productocarrito:{
+            idCarrito:this.cartId ,
+            idProducto:id,
+            cantProducto:1,
+            precio:100 //cualquiera no importa coje el precio de la bse de datos de producto
+          }
+        }
+        ,
       })
-      .subscribe((result) => {
+      .subscribe((result:any) => {
         console.log(result);
+        
       });
   }
 
