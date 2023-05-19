@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { Apollo, gql } from 'apollo-angular';
 
+
 const GET_PRODUCTOS = gql`
   query {
     allProducts{
