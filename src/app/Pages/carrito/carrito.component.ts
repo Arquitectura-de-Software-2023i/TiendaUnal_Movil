@@ -61,6 +61,19 @@ mutation getcreateProductosCarrito($productocarrito: ProductocarritoInput!)  {
 }
 `;
 
+const CREATE_ENVIO = gql`
+mutation createEnvio($id_cliente: Int!) {
+  createEnvio(id_cliente: $id_cliente) {
+    id
+    id_cliente
+    precio_total
+    estado    
+    fecha_creacion
+    fecha_entrega    
+  }
+}
+`;
+
 
 @Component({
   selector: 'app-carrito',
@@ -131,13 +144,14 @@ export class CarritoComponent  implements OnInit {
       .mutate({
         mutation: DELETE_PRODUCTOS_BY_CARRITO,
         variables: {
-          id: id,
+          idProducto: id,
           carrito: { idCarrito: this.cartId } //
         },
       })
       .subscribe((result) => {
         console.log(result);
       });
+    window.location.reload();
   }
   reducir_producto_de_carrito(id: number) {
     console.log("restaaaaaaaaaaaaaa");
@@ -152,6 +166,7 @@ export class CarritoComponent  implements OnInit {
       .subscribe((result) => {
         console.log(result);
       });
+      window.location.reload();
   }
   aumentar_producto_de_carrito(id: number) {
     console.log("sumaaaaaaa");
@@ -172,7 +187,28 @@ export class CarritoComponent  implements OnInit {
         console.log(result);
         
       });
+    window.location.reload();
   }
+  pagar_carrito() {
+    console.log("enviiiooooooooooooo");
+    this.apollo
+      .mutate({
+        mutation: CREATE_ENVIO,
+        variables: {
+          productocarrito:{
+            id_cliente:1
+          }
+        }
+        ,
+      })
+      .subscribe((result:any) => {
+        console.log(result);
+        
+      });
+    window.location.reload();
+  }
+
+  
 
 }
 
