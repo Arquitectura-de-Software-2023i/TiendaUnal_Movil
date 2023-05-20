@@ -258,7 +258,7 @@ export class CarritoComponent  implements OnInit {
         console.log(result);
         
       });
-    window.location.reload();
+    
   }
 
   calcularTotalCarrito() {
