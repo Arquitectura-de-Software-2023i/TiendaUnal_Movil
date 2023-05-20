@@ -17,21 +17,40 @@
       <ion-accordion-group [multiple]="true" expand="inset" *ngFor="let envio of envios">
         <ion-accordion>
           <ion-item slot="header">
-            <div>
-              Envio #{{envio.id.toString().padStart(5, '0')}}
-            </div>            
-            <div>
-              Precio total:{{envio.precio_total}}
-            </div>            
+
+            <ion-label>
+              <h2>Envio #{{envio.id.toString().padStart(5, '0')}}</h2>
+              <p>Creado el: {{ envio.fecha_creacion }}</p>  
+            </ion-label>
+
+            <ion-label slot="end">
+              <p>{{envio.estado}}</p>
+              <h6 style="color: #FFA800;">${{envio.precio_total}}</h6>
+            </ion-label>
+                       
           </ion-item>
-          <div class="ion-padding" slot="content" style="color: #2e2d2d;">
-            <p>Estado: {{ envio.estado }}</p>
-            <p>Fecha creacion: {{ envio.fecha_creacion }}</p>
+
+          <div slot="content">            
             <div *ngFor="let detail of envio.details">
-              <hr width="50%" color="black" />
-              <p>Producto: {{ detail.id_producto }}</p>
-              <p>Cantidad: {{ detail.cantidad }}</p>
-              <p>Subtotal: {{ detail.subtotal }}</p>
+
+              <ion-item style="--background: #d2ced3;" slot="header">
+
+                <ion-thumbnail slot="start" >
+                  <img class="imagen"  src="../../../assets/images.png">
+                </ion-thumbnail>
+
+                <ion-label>
+                  <h2 class="letra-morado-oscuro">Producto: {{ detail.id_producto }}</h2>
+                  <p class="letra-negra">Cantidad: {{ detail.cantidad }}</p>
+                  <p class="letra-negra">Precio: ${{ detail.subtotal/detail.cantidad }}</p>  
+                </ion-label>
+    
+                <ion-label slot="end">
+                  <p class="letra-negra" style="font-weight: bold;">Subtotal:</p>
+                  <p class="letra-negra">${{ detail.subtotal }}</p>
+                </ion-label>
+              </ion-item>
+
             </div>
           </div>
         </ion-accordion>

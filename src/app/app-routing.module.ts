@@ -9,6 +9,11 @@ import { ProductoComponent } from './Pages/producto/producto.component';
 import { ChatComponent } from './Pages/chat/chat.component';
 
 const routes: Routes = [
+  {
+    path: 'producto',
+    component: ProductoComponent
+
+  },  
 
   {
     path: 'carrito',
@@ -36,12 +41,6 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
-
-  },
-
-  {
-    path: 'user-profile',
-    component: UserProfileComponent
 
   },
   {

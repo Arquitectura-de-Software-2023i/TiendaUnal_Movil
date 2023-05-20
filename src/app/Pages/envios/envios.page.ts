@@ -25,6 +25,9 @@ export class EnviosPage implements OnInit {
     console.log("Userid: "+this.userid);
     this.fetchEnvios();
     console.log("hasEnvios "+this.hasEnvios);
+
+    
+    console.log("producto ",this.fetchProducto(1));
   }  
 
   fetchEnvios(): void {
@@ -101,10 +104,7 @@ export class EnviosPage implements OnInit {
         query: gql`
           query productById($id: Int!){
             productById(id: $id){              
-              nombre
-              precio
-              descripcion
-              imagen
+              nombre              
             }
           }
         `,
@@ -114,7 +114,7 @@ export class EnviosPage implements OnInit {
       })
       .subscribe(({ data }) => {
         console.log(data.productById);
-        return(data.productById);        
+        return(data.productById);
       });
   };
   

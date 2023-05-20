@@ -33,7 +33,7 @@ mutation sendmensaje($chat: chatInput!){
   }
 }
 `;
-
+/*
 mutation {
   createMessage(chat: {
     Administrador_id: "641f9c1cff0bef295a20b834"
@@ -44,7 +44,7 @@ mutation {
     status
   }
 }
-
+*/
 
 @Component({
   selector: 'app-chat',
