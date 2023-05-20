@@ -10,7 +10,7 @@
 
 
 
-      <form action="" style="margin-top: 16%; margin-left: 7%;">
+      <form metod="post" action="" style="margin-top: 16%; margin-left: 7%;">
         <div [hidden]="div_nombres">
           <div style="text-align: center; margin-top:5%; margin-right: 7%;">
             <h4 style="color: white;">Completa la información para crear una cuenta</h4>
@@ -19,23 +19,25 @@
   
           <div>
             <p class="letra">Nombres</p>
-            <input class="button-log" type="text">
+            <input [(ngModel)]="cuenta.firstName" name="firstName" id = "firstName" class="button-log" type="text">
           </div>
   
           <div>
             <p class="letra">Apellidos</p>
-            <input class="button-log" type="text">
+            <input  [(ngModel)]="cuenta.lastName" name="lastName" id = "lastName" class="button-log" type="text">
           </div>
   
           <div>
             <p class="letra">Nombre de Usuario</p>
-            <input  class="button-log" type="text">
+            <input  [(ngModel)]="cuenta.username"  name="username" id = "username"  class="button-log" type="text">
           </div>
   
           <div>
             <p class="letra">Numero de teléfono</p>
-            <input  class="button-log" type="text">
+            <input  [(ngModel)]="cuenta.phoneNumber"  name="phoneNumber" id = "phoneNumber" class="button-log" type="text">
           </div>
+
+          
           <button type="button" class="btn-ingreso" (click)="Name_to_city()">Siguiente</button>  
 
         </div  >
@@ -43,14 +45,19 @@
 
         <div [hidden]="div_ciudad">
           <div>
+            <p class="letra">Email</p>
+            <input  [(ngModel)]="cuenta.email"   name="email" id = "email" class="button-log" type="text">
+          </div>
+
+          <div>
             <p class="letra">Ciudad</p>
-            <input class="button-log" type="text">
+            <input [(ngModel)]="cuenta.city"  name="city" id = "city" class="button-log" type="text">
           </div>
   
   
           <div>
             <p class="letra">Dirección</p>
-            <input class="button-log" type="text">
+            <input [(ngModel)]="cuenta.address"   name="address" id = "address"  class="button-log" type="text">
           </div>
 
           <button type="button" (click)="City_to_pass()" class="btn-ingreso">Siguiente</button>  
@@ -65,16 +72,16 @@
 
           <div>
             <p class="letra">Contraseña</p>
-            <input  class="button-log" type="text">
+            <input [(ngModel)]="cuenta.password"  name="password" id = "password"  class="button-log" type="password">
           </div>
   
   
           <div>
             <p class="letra">Confirma contraseña</p>
-            <input  class="button-log" type="text">
+            <input  class="button-log" type="password">
           </div>
   
-          <button type="button" class="btn-ingreso">Crear cuenta</button>  
+          <input (click)="register()" type="submit"class="btn-ingreso" value="Ingresar">
         </div>
 
         

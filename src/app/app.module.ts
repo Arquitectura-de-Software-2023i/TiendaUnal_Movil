@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PagesModule } from './Pages/pages.module';
 import { ComponentsModule } from './Components/components.module';
 import { GraphQLModule } from './graphql.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -26,7 +27,10 @@ import { GraphQLModule } from './graphql.module';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    GraphQLModule
+    GraphQLModule,
+    PagesModule,
+    ComponentsModule,
+    FormsModule
     
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

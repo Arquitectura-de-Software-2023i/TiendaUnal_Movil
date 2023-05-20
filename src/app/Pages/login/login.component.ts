@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { userInfo } from 'os';
+
+interface user  {
+  user: string  
+  password: string
+
+}
 
 @Component({
   selector: 'app-login',
@@ -6,14 +13,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent  implements OnInit {
-  user: any;
-  password: any;
+  Message: any[];
+  usuario: user = {
+    user: '',
+    password: ''
+  }
   
-
   constructor() { }
 
   ngOnInit() {
     
+  }
+
+  login(){
+    console.log(this.usuario)
   }
 
 }

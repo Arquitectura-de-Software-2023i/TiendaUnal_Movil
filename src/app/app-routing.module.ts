@@ -5,11 +5,19 @@ import { RegisterComponent } from './Pages/register/register.component';
 import { CarritoComponent } from './Pages/carrito/carrito.component';
 import { HomeComponent } from './Pages/home/home.component';
 
+import { ProductoComponent } from './Pages/producto/producto.component';
+import { ChatComponent } from './Pages/chat/chat.component';
+
 const routes: Routes = [
 
   {
     path: 'carrito',
     component: CarritoComponent
+
+  },
+  {
+    path: 'chat',
+    component: ChatComponent
 
   },
 
@@ -29,7 +37,13 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent
 
-  },  
+  },
+
+  {
+    path: 'user-profile',
+    component: UserProfileComponent
+
+  },
   {
     path: '',
     redirectTo: 'login',

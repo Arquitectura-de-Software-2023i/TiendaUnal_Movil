@@ -1,4 +1,67 @@
-<div style="background-color: #4C015D;">
-  <ion-searchbar color="light" placeholder="Buscar..."></ion-searchbar>
+
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        <img class="imagen-fondo" src="..\assets\Fondo_login.png" alt="">
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+
+
+
+    <div style="height: 300px;">
+
+        INFORMACIÓN DE LA CUENTA AQUÍ
+
+    </div>
+
+
+    <ion-item [routerLink]="['/home']">
+      <ion-icon style="font-size: 3em;" name="storefront" slot="start"></ion-icon>
+      <ion-label class="label-menu">Inicio</ion-label>
+    </ion-item>
+
+    <ion-item >
+      <ion-icon style="font-size: 3em;"  name="pricetags" slot="start"></ion-icon>
+      <ion-label class="label-menu">Categorias</ion-label>
+    </ion-item>
+
+    <ion-item [routerLink]="['/carrito']">
+      <ion-icon style="font-size: 3em;" name="cart"  slot="start"></ion-icon>
+      <ion-label class="label-menu">Carrito</ion-label>
+    </ion-item>
+
+    <ion-item [routerLink]="['/user-profile']">
+      <ion-icon style="font-size: 3em;" name="person" slot="start" ></ion-icon>
+      <ion-label class="label-menu">Mi cuenta</ion-label>
+    </ion-item>
   
+
+
+
+    <ion-item slot="bottom">
+      <ion-label>Cerrar sesión</ion-label>
+    </ion-item>
+
+  </ion-content>
+</ion-menu>
+
+
+
+
+
+
+<div  id="main-content">
+  <ion-header>
+    <ion-toolbar>
+
+      <ion-buttons slot="start" style="margin-top: 10px;">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+
+        <ion-searchbar style="margin-top: 10px;" show-clear-button="focus" color="light" placeholder="Buscar..."></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
 </div>
