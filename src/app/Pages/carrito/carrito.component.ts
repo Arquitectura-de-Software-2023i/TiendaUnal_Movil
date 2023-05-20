@@ -74,6 +74,23 @@ mutation createEnvio($id_cliente: Int!) {
 }
 `;
 
+const VACIAR_CARRO = gql`
+mutation vaciarCarro($idCarrito: Int!)  {
+  deleteProductosCarritoByIdCarrito(idCarrito:$idCarrito)
+}
+`;
+
+const CREAR_TRANSACCION = gql`
+mutation crearTransccion($transaccion: TransaccionesInput!){
+  createTransaccion(transaccion:$transaccion) {
+    idTransaccion
+    idCarrito
+    estadoTransaccion
+    pagoTotal
+  }
+}
+`;
+
 
 @Component({
   selector: 'app-carrito',
@@ -114,6 +131,8 @@ export class CarritoComponent  implements OnInit {
             this.cantidadItems = result.data?.productosCarritoByIdCarrito.map(
               (item: any) => item.cantProducto
             );
+            console.log(this.idItems);
+            console.log(this.cantidadItems);
 
             this.idItems.forEach((itemId: any) => {
               this.apollo
@@ -134,6 +153,7 @@ export class CarritoComponent  implements OnInit {
             
           });
       });
+    console.log(this.cartItems);
     
   }
 
@@ -166,7 +186,7 @@ export class CarritoComponent  implements OnInit {
       .subscribe((result) => {
         console.log(result);
       });
-      window.location.reload();
+     //window.location.reload();
   }
   aumentar_producto_de_carrito(id: number) {
     console.log("sumaaaaaaa");
@@ -205,8 +225,38 @@ export class CarritoComponent  implements OnInit {
         console.log(result);
         
       });
+    console.log("pagooooo");
+    this.apollo
+      .mutate({
+        mutation: VACIAR_CARRO,
+        variables: {
+          idCarrito: 6 // CAMBIAR POR --->this.cartId
+        }
+        ,
+      })
+      .subscribe((result:any) => {
+        console.log(result);
+        
+      });
+    console.log("transaccion");
+    this.apollo
+      .mutate({
+        mutation: CREAR_TRANSACCION,
+        variables: {
+          transaccion:{idCarrito:6, // CAMBIAR POR --->this.cartId
+            estadoTransaccion:"Aceptada",
+            pagoTotal:this.total} 
+        }
+        ,
+      })
+      .subscribe((result:any) => {
+        console.log(result);
+        
+      });
     window.location.reload();
   }
+  
+  
 
   
 

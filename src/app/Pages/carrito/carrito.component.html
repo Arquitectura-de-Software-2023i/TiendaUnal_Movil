@@ -12,9 +12,9 @@
             </ion-thumbnail>
             
             <ion-label>
-              <h2>{{ item.nombre }}</h2>
-              <p> {{ item.descripcion}}</p>
-              <p>Precio: {{ cantidadItems[i] * item.precio}}</p>
+              <h2>{{ cartItems[i].nombre }}</h2>
+              <p> {{ cartItems[i].descripcion}}</p>
+              <p>Precio: {{ cantidadItems[i] * cartItems[i].precio}}</p>
             </ion-label>
             <ion-label slot="end" class="botones" >
               <ion-button shape="round" class="signo-button" (click)="reducir_producto_de_carrito(item.idProducto)">
