@@ -1,0 +1,41 @@
+<body>
+  <ion-header [translucent]="true">
+    <ion-toolbar>    
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="user-profile/1"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Envios</ion-title>    
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    
+    <div *ngIf="loading">Loading...</div>
+    <div *ngIf="error">Error :</div>
+    <div *ngIf="hasEnvios===false">Usted no tiene envios</div>
+    <div *ngIf="envios" >
+      <ion-accordion-group [multiple]="true" expand="inset" *ngFor="let envio of envios">
+        <ion-accordion>
+          <ion-item slot="header">
+            <div>
+              Envio #{{envio.id.toString().padStart(5, '0')}}
+            </div>            
+            <div>
+              Precio total:{{envio.precio_total}}
+            </div>            
+          </ion-item>
+          <div class="ion-padding" slot="content" style="color: #2e2d2d;">
+            <p>Estado: {{ envio.estado }}</p>
+            <p>Fecha creacion: {{ envio.fecha_creacion }}</p>
+            <div *ngFor="let detail of envio.details">
+              <hr width="50%" color="black" />
+              <p>Producto: {{ detail.id_producto }}</p>
+              <p>Cantidad: {{ detail.cantidad }}</p>
+              <p>Subtotal: {{ detail.subtotal }}</p>
+            </div>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+    </div>    
+  </ion-content>  
+</body>

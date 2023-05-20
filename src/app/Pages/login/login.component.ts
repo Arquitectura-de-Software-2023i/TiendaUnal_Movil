@@ -6,14 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent  implements OnInit {
-  Message: any[];
+  user: any;
+  password: any;
+  
 
   constructor() { }
 
   ngOnInit() {
-    // this.apollo.query({ query: GET_MESAGGE }).subscribe(result => {
-    //   this.Message = result.data['allMessage'] as any;
-    // });
+    
   }
 
 }
