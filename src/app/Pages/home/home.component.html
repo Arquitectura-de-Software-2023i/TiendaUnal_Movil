@@ -1,7 +1,31 @@
 
+
 <app-search></app-search>
 
 <ion-content class="ion-contenedor">
+    <swiper-container
+    [initialSlide]="1"
+    [centeredSlides]="true"
+    [autoplay]="true"
+    [spaceBetween]="20"
+    [pagination]="{clickeable: true, dynamicBullets: true}"
+    
+    
+    
+    >
+      <swiper-slide>
+        <img  src="..\assets\slide\1.jpg" alt="">
+      </swiper-slide>
+      <swiper-slide>
+        <img  src="..\assets\slide\2.jpg" alt="">
+      </swiper-slide>
+      <swiper-slide>
+        <img  src="..\assets\slide\3.jpg" alt="">
+      </swiper-slide>
+      <swiper-slide>
+        <img src="..\assets\slide\4.jpg" alt="">
+      </swiper-slide>
+    </swiper-container>
     <ion-grid>
       <ion-row>
         <ion-col  *ngFor="let prod of Products ; let i = index" size="6" size-md="4" size-lg="2">
