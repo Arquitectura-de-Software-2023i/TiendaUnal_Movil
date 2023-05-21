@@ -25,6 +25,11 @@ const routes: Routes = [
     component: ChatComponent
 
   },
+  {
+    path: 'producto',
+    component: ProductoComponent
+
+  },
 
   {
     path: 'login',
@@ -63,7 +68,11 @@ const routes: Routes = [
   {
     path: 'user-profile/:userid',
     loadChildren: () => import('./Pages/user-profile/user-profile.module').then( m => m.UserProfilePageModule)
+  },  {
+    path: 'envios-admin',
+    loadChildren: () => import('./Pages/envios-admin/envios-admin.module').then( m => m.EnviosAdminPageModule)
   },
+
 
 ];
 

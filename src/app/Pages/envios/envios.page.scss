@@ -14,3 +14,28 @@ ion-accordion ion-item[slot="header"] {
     color:#4C015D;
     font-weight: bold;
 }
+
+.noenvios-container{
+    color:#4C015D;
+    font-weight: bold;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; 
+}
+  
+.custom-spinner {
+    height: 80px;
+    width: 80px;
+    --color: #4C015D;
+}
+  
