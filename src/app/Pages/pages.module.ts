@@ -15,7 +15,9 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { RouteReuseStrategy } from '@angular/router';
 import { ProductoComponent } from './producto/producto.component';
 import { ChatComponent } from './chat/chat.component';
+import { register } from 'swiper/element/bundle';
 
+register();
 
 @NgModule({
   declarations: [
