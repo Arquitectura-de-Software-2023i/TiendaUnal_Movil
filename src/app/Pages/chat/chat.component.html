@@ -9,7 +9,7 @@
 
 <ion-content>
   
-  <ion-item *ngFor="let mensaje of mensajes">
+  <ion-item *ngFor="let mensaje of mensajes; let i = index"  [ngClass]="getClaseRemitente(i)">
     <ion-label>{{ mensaje }}</ion-label>
   </ion-item>
   
