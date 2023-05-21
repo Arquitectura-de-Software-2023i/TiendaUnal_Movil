@@ -1,0 +1,60 @@
+<body>
+  <div class="padre">
+    <div *ngIf="userdata">
+      <div style="text-align: center;">
+        <img class="imagen-fondo" src="..\assets\Fondo_login.png" alt="" />
+      </div>
+
+      <form style="margin-top: 16%; margin-left: 7%;">
+        <div style="text-align: center; margin-top: 5%; margin-right: 7%;">
+          <h4 style="color: white;">
+            Completa la información para crear una cuenta
+          </h4>
+        </div>
+
+        <div>
+          <div class="letra">
+            Nombre: 
+            <a style="color: white;">
+              {{userdata.firstName+" "+userdata.lastName}}
+            </a>
+          </div>                    
+        </div>
+      
+        <div>
+          <div class="letra">
+            Número de teléfono:
+            <a style="color: white;">{{userdata.phoneNumber}}</a>
+          </div>                    
+        </div>        
+
+        <div>
+          <div class="letra">
+            Fecha nacimiento: 
+            <a style="color: white;">{{userdata.birth}}</a>
+          </div>                    
+        </div>
+
+        <div>
+          <div class="letra">
+            Ciudad de recidencia: 
+            <a style="color: white;">{{userdata.city}}</a>
+          </div>                    
+        </div>
+
+        <div>
+          <div class="letra">
+            Dirección: 
+            <a style="color: white;">{{userdata.address}}</a>
+          </div>                    
+        </div>
+
+        <button type="button" class="btn-envios" (click)="goToEnvios()">Ver Envios</button>  
+
+
+
+      </form>
+    </div>
+  </div>
+  
+</body>

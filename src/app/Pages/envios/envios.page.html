@@ -1,0 +1,60 @@
+<body>
+  <ion-header [translucent]="true">
+    <ion-toolbar>    
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="user-profile/1"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Envios</ion-title>    
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    
+    <div *ngIf="loading">Loading...</div>
+    <div *ngIf="error">Error :</div>
+    <div *ngIf="hasEnvios===false">Usted no tiene envios</div>
+    <div *ngIf="envios" >
+      <ion-accordion-group [multiple]="true" expand="inset" *ngFor="let envio of envios">
+        <ion-accordion>
+          <ion-item slot="header">
+
+            <ion-label>
+              <h2>Envio #{{envio.id.toString().padStart(5, '0')}}</h2>
+              <p>Creado el: {{ envio.fecha_creacion }}</p>  
+            </ion-label>
+
+            <ion-label slot="end">
+              <p>{{envio.estado}}</p>
+              <h6 style="color: #FFA800;">${{envio.precio_total}}</h6>
+            </ion-label>
+                       
+          </ion-item>
+
+          <div slot="content">            
+            <div *ngFor="let detail of envio.details">
+
+              <ion-item style="--background: #d2ced3;" slot="header">
+
+                <ion-thumbnail slot="start" >
+                  <img class="imagen"  src="../../../assets/images.png">
+                </ion-thumbnail>
+
+                <ion-label>
+                  <h2 class="letra-morado-oscuro">Producto: {{ detail.id_producto }}</h2>
+                  <p class="letra-negra">Cantidad: {{ detail.cantidad }}</p>
+                  <p class="letra-negra">Precio: ${{ detail.subtotal/detail.cantidad }}</p>  
+                </ion-label>
+    
+                <ion-label slot="end">
+                  <p class="letra-negra" style="font-weight: bold;">Subtotal:</p>
+                  <p class="letra-negra">${{ detail.subtotal }}</p>
+                </ion-label>
+              </ion-item>
+
+            </div>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+    </div>    
+  </ion-content>  
+</body>

@@ -33,8 +33,18 @@ mutation sendmensaje($chat: chatInput!){
   }
 }
 `;
-
-
+/*
+mutation {
+  createMessage(chat: {
+    Administrador_id: "641f9c1cff0bef295a20b834"
+    Usuario_id: "6451a5d6046ba0de39316c0f"
+    Remitente: "Usuario"
+    Mensaje: "No sea sapo"
+  }) {
+    status
+  }
+}
+*/
 
 @Component({
   selector: 'app-chat',
