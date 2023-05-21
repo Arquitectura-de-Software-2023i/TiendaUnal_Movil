@@ -14,7 +14,6 @@ interface user  {
 })
 export class LoginComponent  implements OnInit {
   Message: any[];
-
   usuario: user = {
     user: '',
     password: ''

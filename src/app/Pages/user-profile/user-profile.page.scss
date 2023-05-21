@@ -1,0 +1,40 @@
+body {
+    background-color: #4C015D;
+  }
+
+
+
+.letra {
+  color: #FFA800;
+  font-style: Barlow;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.imagen-fondo {
+  width: 70%;
+}
+
+.padre{
+  display: table;
+  height: 700px;
+  width: 100%;
+}
+ 
+.padre > div{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.btn-envios {
+    margin-top: 7%;
+    background-color: #FFA800;
+    width: 90%;
+    margin-bottom: 10px;
+    height: 35px;
+    font-style: Barlow;
+    font-weight: 600;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
+  }

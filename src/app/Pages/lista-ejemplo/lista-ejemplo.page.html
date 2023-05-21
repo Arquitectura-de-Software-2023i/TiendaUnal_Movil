@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>listaEjemplo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+<ion-accordion-group expand="inset" *ngFor="let character of characters">
+  <ion-accordion>
+    <ion-item slot="header" color="light">
+      <ion-label>
+        {{ character.name }}
+      </ion-label>
+      <ion-avatar slot="start" [routerLink]="['/profile/'+character.id]">
+        <img src="{{ character.image }}" alt="">
+      </ion-avatar>
+    </ion-item>
+    <div class="ion-padding" slot="content">
+      <p>Gender: {{ character.gender }}</p>
+      <p>Species: {{ character.species }}</p>
+    </div>
+  </ion-accordion>
+  
+
+</ion-accordion-group>
+  
+</ion-content>

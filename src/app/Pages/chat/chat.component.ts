@@ -16,15 +16,35 @@ query {
   }
 }
 `;
+const GET_MENSAJES_BY_USER = gql`
+query mensajesuser($Usuario_id:  Int!){
+  allMessageByUserId(Usuario_id: $Usuario_id){
+    Mensaje
+    Usuario_id
+    Administrador_id
+    Remitente
+  }
+}
+`;
 const SEND_MENSAJES = gql`
-mutation ($chat: chatInput!){
+mutation sendmensaje($chat: chatInput!){
   createMessage(chat: $chat){
     status
   }
 }
 `;
-
-
+/*
+mutation {
+  createMessage(chat: {
+    Administrador_id: "641f9c1cff0bef295a20b834"
+    Usuario_id: "6451a5d6046ba0de39316c0f"
+    Remitente: "Usuario"
+    Mensaje: "No sea sapo"
+  }) {
+    status
+  }
+}
+*/
 
 @Component({
   selector: 'app-chat',
@@ -33,22 +53,33 @@ mutation ($chat: chatInput!){
 })
 export class ChatComponent  implements OnInit {
   mensajes: any[] = [];
-  usuario=1;
+  remitentes: any[] = [];
+  usuario = 76;
   newMessage: string = '';
+  administrador = 1;
+  token_us = "6451a5d6046ba0de39316c0f";
+  token_ad = "641f9c1cff0bef295a20b834";
 
   constructor(private apollo: Apollo, private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.apollo
       .watchQuery({
-        query: GET_MENSAJES,
+        query: GET_MENSAJES_BY_USER,
+        variables: {
+          Usuario_id: this.usuario,
+        },
       })
       .valueChanges.subscribe((result: any) => {
-        this.mensajes = result.data?.allMessage.map(
+        this.mensajes = result.data?.allMessageByUserId.map(
           (item: any) => item.Mensaje
+        );
+        this.remitentes = result.data?.allMessageByUserId.map(
+          (item: any) => item.Remitente
         );
       });
   }
+
   sendMessage() {
     if (this.newMessage.trim() !== '') {
       this.apollo
@@ -56,9 +87,10 @@ export class ChatComponent  implements OnInit {
           mutation: SEND_MENSAJES,
           variables: { 
             chat: {
-              Usuario_id: this.usuario.toString(),
-              Administrador_id: "1",
-              Mensaje: this.newMessage
+              Usuario_id: this.token_us,
+              Administrador_id: this.token_ad,
+              Mensaje: this.newMessage,
+              Remitente: "Usuario"
             } 
           },
         })
@@ -67,6 +99,15 @@ export class ChatComponent  implements OnInit {
           this.changeDetectorRef.detectChanges();
           this.newMessage = '';
         });
+    }
+  }
+  getClaseRemitente(i: number): string {
+    if (this.remitentes[i] === "Administrador") {
+      return 'administador-class';
+    } else if (this.remitentes[i] === "Usuario") {
+      return 'usuario-class';
+    } else {
+      return '';
     }
   }
 

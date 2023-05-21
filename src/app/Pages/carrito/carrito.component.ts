@@ -217,47 +217,52 @@ export class CarritoComponent  implements OnInit {
     
   }
   pagar_carrito() {
+    //orden para que no se ejute nada antes que lo otro
     console.log("enviiiooooooooooooo");
     this.apollo
       .mutate({
         mutation: CREATE_ENVIO,
         variables: {
-          id_cliente:6
+          id_cliente:5 //usuariuo id
         }
         ,
       })
       .subscribe((result:any) => {
         console.log(result);
+        console.log("pagooooo");
+        this.apollo
+          .mutate({
+            mutation: VACIAR_CARRO,
+            variables: {
+              idCarrito: 6 // CAMBIAR POR --->this.cartId
+            }
+            ,
+          })
+          .subscribe((result: any) => {
+            console.log(result);
+            console.log("transaccion");
+            this.apollo
+              .mutate({
+                mutation: CREAR_TRANSACCION,
+                variables: {
+                  transaccion: {
+                    idCarrito: 6, // CAMBIAR POR --->this.cartId
+                    estadoTransaccion: "Aceptada",
+                    pagoTotal: this.total_numero
+                  }
+                }
+                ,
+              })
+              .subscribe((result: any) => {
+                console.log(result);
+
+              });
+
+          });
         
       });
-    console.log("pagooooo");
-    this.apollo
-      .mutate({
-        mutation: VACIAR_CARRO,
-        variables: {
-          idCarrito: 6 // CAMBIAR POR --->this.cartId
-        }
-        ,
-      })
-      .subscribe((result:any) => {
-        console.log(result);
-        
-      });
-    console.log("transaccion");
-    this.apollo
-      .mutate({
-        mutation: CREAR_TRANSACCION,
-        variables: {
-          transaccion:{idCarrito:6, // CAMBIAR POR --->this.cartId
-            estadoTransaccion:"Aceptada",
-            pagoTotal:this.total_numero} 
-        }
-        ,
-      })
-      .subscribe((result:any) => {
-        console.log(result);
-        
-      });
+    
+
     
   }
 
