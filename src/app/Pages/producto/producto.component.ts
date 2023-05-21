@@ -25,9 +25,15 @@ const GET_CARRITO_BY_USUARIO = gql`
 }
 `;
 
-// const CREATE_PRODUCT_CARRITO = gql`
-//   MUTACION!
-// `;
+const CREATE_PRODUCTOS_CARRITO = gql`
+mutation getcreateProductosCarrito($productocarrito: ProductocarritoInput!)  {
+  createProductoCarrito(productocarrito:$productocarrito){ 
+    idProducto
+    precio
+    cantProducto
+  }
+}
+`;
 
 interface Producto {
   idProducto?: number
@@ -38,6 +44,11 @@ interface Producto {
 
 }
 
+interface Comprar_producto{
+  idProducto?: number
+  precio?: number
+  cantidad?: number
+}
 
 @Component({
   selector: 'app-producto',
@@ -53,6 +64,7 @@ export class ProductoComponent implements OnInit {
   list_add: any = {}
   cantidad: number = 0
   cartId: number
+  producto_comprado: Comprar_producto
 
   constructor(public apollo: Apollo, private route: ActivatedRoute) { }
 
@@ -61,7 +73,6 @@ export class ProductoComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.parametro = params['id'];
       this.param = parseInt(this.parametro)
-      console.log(this.param)
     });
 
 
@@ -73,36 +84,44 @@ export class ProductoComponent implements OnInit {
     }).valueChanges.subscribe((result: any) => {
       const product = result.data?.productById;
       this.producto = product;
-      console.log(this.producto)
     });
 
 
   }
 
-  // add_cart() {
-
-  //   this.apollo.watchQuery({
-  //     query: GET_CARRITO_BY_USUARIO,
-  //   }).valueChanges.subscribe((result: any) => {
-
-  //     this.cartId = result.data?.carritoByIdUsuario[0].idcarrito;
-
-  //     // this.apollo
-  //     //   .mutate({
-  //     //     mutation: DELETE_PRODUCTOS_BY_CARRITO,
-  //     //     variables: {
-  //     //       id: id,
-  //     //       carrito: { idCarrito: this.cartId } //
-  //     //     },
-  //     //   })
-  //     //   .subscribe((result) => {
-  //     //     console.log(result);
-  //     //   });
 
 
-  //   })
+
+  add_cart() {
+
+    this.apollo.watchQuery({
+      query: GET_CARRITO_BY_USUARIO,
+    }).valueChanges.subscribe((result: any) => {
+
+      this.cartId = result.data?.carritoByIdUsuario[0].idCarrito;
+     
+      this.apollo
+        .mutate({
+          mutation: CREATE_PRODUCTOS_CARRITO,
+          variables: {
+            productocarrito:{
+
+              idCarrito:this.cartId ,
+              idProducto: this.producto.idProducto,
+              cantProducto: 1,
+              precio: this.producto.precio,
+
+            }
+          },
+        })
+        .subscribe((result) => {
+          console.log(result);
+        });
 
 
-  // }
+    })
+
+
+  }
 
 }
