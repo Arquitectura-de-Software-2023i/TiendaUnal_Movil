@@ -2,6 +2,8 @@ import { Apollo, gql } from 'apollo-angular';
 import { Component, OnInit } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
 import { resourceLimits } from 'worker_threads';
+import { ActivatedRoute } from '@angular/router';
+import { Platform } from '@ionic/angular';
 
 const GET_PRODUCTO = gql`
 query getProducto($id: Int!){
@@ -109,12 +111,15 @@ export class CarritoComponent  implements OnInit {
   cantidadItems: any[];
   total: String;
   total_numero: number;
+  shouldReload = true;
   
   
-  constructor(private apollo: Apollo, private changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private apollo: Apollo, private changeDetectorRef: ChangeDetectorRef, private route: ActivatedRoute, private platform: Platform) {}
+
+
 
   ngOnInit() {
-    console.log(usuario);
+    
     this.apollo
       .watchQuery({
         query: GET_CARRITO_BY_USUARIO,
@@ -124,6 +129,7 @@ export class CarritoComponent  implements OnInit {
       })
       .valueChanges.subscribe((result: any) => {
         console.log(result);
+        
         this.cartId = result.data?.carritoByIdUsuario[0].idCarrito;
         this.apollo
           .watchQuery({
@@ -140,7 +146,7 @@ export class CarritoComponent  implements OnInit {
               (item: any) => item.cantProducto
             );
             console.log(this.idItems);
-
+            
             this.idItems.forEach((itemId: any) => {
               this.apollo
                 .watchQuery({
@@ -155,6 +161,7 @@ export class CarritoComponent  implements OnInit {
                   this.loading = result.loading;
                   this.error = result.error;
                   this.calcularTotalCarrito();
+                  this.changeDetectorRef.detectChanges();
                 });
             });
             
@@ -179,7 +186,9 @@ export class CarritoComponent  implements OnInit {
       });
     if (this.cartItems.length > i) {
       this.cartItems.splice(i, 1); // Elimina el elemento en el índice especificado
+      this.cantidadItems.splice(i, 1); // Elimina el elemento en el índice especificado
     }
+    this.calcularTotalCarrito();
     this.changeDetectorRef.detectChanges();
   }
   reducir_producto_de_carrito(id: number, i: number) {
@@ -196,6 +205,9 @@ export class CarritoComponent  implements OnInit {
         console.log(result);
       });
     this.cantidadItems[i]--;
+    if (this.cantidadItems[i]<=0){
+      this.eliminar_producto_de_carrito(id, i)
+    }
     this.calcularTotalCarrito();
     this.changeDetectorRef.detectChanges();
   }
