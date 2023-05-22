@@ -1,6 +1,7 @@
 import { Apollo, gql } from 'apollo-angular';
 import { Component, OnInit } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
+import { resourceLimits } from 'worker_threads';
 
 const GET_PRODUCTO = gql`
 query getProducto($id: Int!){
@@ -15,8 +16,8 @@ query getProducto($id: Int!){
 `;
 
 const GET_CARRITO_BY_USUARIO = gql`
-  query {
-   carritoByIdUsuario(idusuario:1){
+  query idcarritobyuser($idusuario: Int!) {
+   carritoByIdUsuario(idusuario:$idusuario){
     idCarrito
     totalprecio    
     totalproductos
@@ -92,6 +93,7 @@ mutation crearTransccion($transaccion: TransaccionesInput!){
 }
 `;
 
+const usuario= localStorage.getItem("userID");
 
 @Component({
   selector: 'app-carrito',
@@ -108,16 +110,21 @@ export class CarritoComponent  implements OnInit {
   total: String;
   total_numero: number;
   
+  
   constructor(private apollo: Apollo, private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit() {
+    console.log(usuario);
     this.apollo
       .watchQuery({
         query: GET_CARRITO_BY_USUARIO,
+        variables: {
+          idusuario:usuario,
+        },
       })
       .valueChanges.subscribe((result: any) => {
+        console.log(result);
         this.cartId = result.data?.carritoByIdUsuario[0].idCarrito;
-
         this.apollo
           .watchQuery({
             query: GET_PRODUCTOS_BY_CARRITO,

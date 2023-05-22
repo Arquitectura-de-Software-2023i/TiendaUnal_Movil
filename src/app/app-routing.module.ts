@@ -12,10 +12,8 @@ import {UserProfileComponent} from './Pages/user-profile/user-profile.component'
 import {EnviosAdminComponent} from './Pages/envios-admin/envios-admin.component';
 
 const routes: Routes = [
-  {
-    path: 'producto',
-    component: ProductoComponent
-  },
+
+
   {
     path: 'carrito',
     component: CarritoComponent
@@ -25,7 +23,7 @@ const routes: Routes = [
     component: ChatComponent
   },
   {
-    path: 'producto',
+    path: 'producto/:id',
     component: ProductoComponent
   },
 
