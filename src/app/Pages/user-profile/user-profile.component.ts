@@ -5,10 +5,11 @@ import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-user-profile',
-  templateUrl: './user-profile.page.html',
-  styleUrls: ['./user-profile.page.scss'],
+  templateUrl: './user-profile.component.html',
+  styleUrls: ['./user-profile.component.scss'],
 })
-export class UserProfilePage implements OnInit {
+export class UserProfileComponent  implements OnInit {
+
   userid:String;
   userdata:any;
   loading = true;
@@ -63,5 +64,6 @@ export class UserProfilePage implements OnInit {
   };
 
   
+
 
 }

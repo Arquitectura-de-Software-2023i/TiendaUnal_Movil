@@ -5,10 +5,11 @@ import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-envios-admin',
-  templateUrl: './envios-admin.page.html',
-  styleUrls: ['./envios-admin.page.scss'],
+  templateUrl: './envios-admin.component.html',
+  styleUrls: ['./envios-admin.component.scss'],
 })
-export class EnviosAdminPage implements OnInit {
+export class EnviosAdminComponent  implements OnInit {
+
   filteredEnvios: any[] = [];
   searchKeyword: string;
   allEnvios: any[]=[];
@@ -27,7 +28,6 @@ export class EnviosAdminPage implements OnInit {
     this.fetchEnvios();        
     console.log(this.filteredEnvios);
   }
-
   
   fetchEnvios(): void {
     this.apollo
@@ -46,12 +46,37 @@ export class EnviosAdminPage implements OnInit {
         `
       })
       .subscribe(({ data }) => {
-        this.allEnvios = data.allEnvios;
+        this.allEnvios = data.allEnvios;        
         this.filteredEnvios= data.allEnvios;       
         this.loading = data.loading;
         this.error = data.error;
         //console.log("Fetch allenvios:")     
         //console.log(this.allEnvios);
+      });
+  };
+
+  updateEnvio(id:number,updatedEnvio:any): void {
+    this.apollo
+      .mutate<any>({
+        mutation: gql`
+          mutation updateEnvio($id:Int!,$envio:Envio!){
+            updateEnvio(id:$id,envio:$envio){
+              id,
+              id_cliente,
+              precio_total,
+              estado,
+              fecha_creacion,
+              fecha_entrega
+            }
+          }
+        `,
+        variables:{
+          id:id,
+          envio:updatedEnvio
+        }
+      })
+      .subscribe(({ data }) => {
+        console.log(data.updateEnvio);
       });
   };
 
@@ -69,7 +94,8 @@ export class EnviosAdminPage implements OnInit {
     //console.log("-------Filtered envios-------")
     //console.log(this.filteredEnvios);
   }
-  
+
+
 
 
 }

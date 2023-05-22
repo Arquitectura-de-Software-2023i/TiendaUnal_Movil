@@ -8,7 +8,12 @@
       <ion-back-button defaultHref="user-profile/1"></ion-back-button>
     </ion-buttons>
 
-    <ion-searchbar [(ngModel)]="searchKeyword" (ionChange)="handleSearchInputChange()" class="custom" show-clear-button="focus" placeholder="User id"></ion-searchbar>  
+    <ion-searchbar
+    [(ngModel)]="searchKeyword"
+    (ionChange)="handleSearchInputChange()"
+    class="custom"
+    show-clear-button="focus"
+    placeholder="Envio id"></ion-searchbar>  
   </ion-toolbar>
 
 </ion-header>
@@ -19,6 +24,11 @@
     <ion-spinner class = "custom-spinner" name="circular"></ion-spinner>
   </div>
 
+  <div *ngIf="error" class="noenvios-container">Error :</div>
+
+  <div *ngIf="allEnvios===[]" class="noenvios-container"> 
+    No hay envios
+  </div>
 
   <div *ngIf="filteredEnvios" > 
     <ion-list>

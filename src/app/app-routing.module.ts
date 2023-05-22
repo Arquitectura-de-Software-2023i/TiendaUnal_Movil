@@ -7,56 +7,63 @@ import { HomeComponent } from './Pages/home/home.component';
 
 import { ProductoComponent } from './Pages/producto/producto.component';
 import { ChatComponent } from './Pages/chat/chat.component';
+import { EnviosComponent } from './Pages/envios/envios.component';
+import {UserProfileComponent} from './Pages/user-profile/user-profile.component';
+import {EnviosAdminComponent} from './Pages/envios-admin/envios-admin.component';
 
 const routes: Routes = [
   {
     path: 'producto',
     component: ProductoComponent
-
-  },  
-
+  },
   {
     path: 'carrito',
     component: CarritoComponent
-
   },
   {
     path: 'chat',
     component: ChatComponent
-
   },
   {
     path: 'producto',
     component: ProductoComponent
-
   },
 
   {
     path: 'login',
     component: LoginComponent
-
   },
 
   {
     path: 'register',
     component: RegisterComponent
-
   },
   
   {
     path: 'home',
     component: HomeComponent
+  },
 
+  {
+    path: 'envios/:userid',
+    component: EnviosComponent
+  },
+
+  {
+    path: 'envios-admin',
+    component: EnviosAdminComponent
+  },
+
+  {
+    path: 'user-profile/:userid',
+    component: UserProfileComponent
   },
   {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
   },
-  {
-    path: 'envios/:userid',
-    loadChildren: () => import('./Pages/envios/envios.module').then( m => m.EnviosPageModule)
-  },
+  
   {
     path: 'lista-ejemplo',
     loadChildren: () => import('./Pages/lista-ejemplo/lista-ejemplo.module').then( m => m.ListaEjemploPageModule)
@@ -65,19 +72,7 @@ const routes: Routes = [
     path: 'profile/:id',
     loadChildren: () => import('./Pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
-  {
-    path: 'user-profile/:userid',
-    loadChildren: () => import('./Pages/user-profile/user-profile.module').then( m => m.UserProfilePageModule)
-  },  {
-    path: 'envios-admin',
-    loadChildren: () => import('./Pages/envios-admin/envios-admin.module').then( m => m.EnviosAdminPageModule)
-  },
-  {
-    path: 'mod-envio',
-    loadChildren: () => import('./Pages/mod-envio/mod-envio.module').then( m => m.ModEnvioPageModule)
-  },
-
-
+  
 ];
 
 @NgModule({
