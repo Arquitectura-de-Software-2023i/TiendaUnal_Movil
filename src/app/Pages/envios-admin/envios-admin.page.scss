@@ -1,0 +1,39 @@
+
+ion-content {
+    --ion-background-color: #F8F6F6;
+}
+
+ion-header ion-toolbar{
+    --background: #4C015D;
+}
+
+ion-searchbar.custom {
+    --background: #F8F6F6;
+    --color: #272727;
+    --placeholder-color: #272727;
+    --icon-color: #272727;
+    --clear-button-color: #272727;
+  
+    --border-radius: 4px;
+}
+
+.loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; 
+}
+
+.custom-spinner {
+    height: 80px;
+    width: 80px;
+    --color: #4C015D;
+}
+
+.modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  

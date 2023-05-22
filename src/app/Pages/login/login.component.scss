@@ -54,3 +54,8 @@ body {
 .btn-ingreso :hover{
   background: #4C015D;
 }
+
+ion-toast.custom-toast::part(message) {
+  font-style: italic;
+  font-size: large;
+}

@@ -10,9 +10,17 @@
 
   <ion-content>
     
-    <div *ngIf="loading">Loading...</div>
-    <div *ngIf="error">Error :</div>
-    <div *ngIf="hasEnvios===false">Usted no tiene envios</div>
+    
+    <div *ngIf="loading" class="loading-container">
+      <ion-spinner class = "custom-spinner" name="circular"></ion-spinner>
+    </div>
+
+    <div *ngIf="error" class="noenvios-container">Error :</div>
+
+    <div *ngIf="hasEnvios===false" class="noenvios-container"> 
+      Usted no tiene envios
+    </div>
+
     <div *ngIf="envios" >
       <ion-accordion-group [multiple]="true" expand="inset" *ngFor="let envio of envios">
         <ion-accordion>
