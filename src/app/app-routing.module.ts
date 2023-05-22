@@ -9,11 +9,7 @@ import { ProductoComponent } from './Pages/producto/producto.component';
 import { ChatComponent } from './Pages/chat/chat.component';
 
 const routes: Routes = [
-  {
-    path: 'producto',
-    component: ProductoComponent
 
-  },  
 
   {
     path: 'carrito',
@@ -26,7 +22,7 @@ const routes: Routes = [
 
   },
   {
-    path: 'producto',
+    path: 'producto/:id',
     component: ProductoComponent
 
   },
@@ -68,7 +64,8 @@ const routes: Routes = [
   {
     path: 'user-profile/:userid',
     loadChildren: () => import('./Pages/user-profile/user-profile.module').then( m => m.UserProfilePageModule)
-  },  {
+  },
+  {
     path: 'envios-admin',
     loadChildren: () => import('./Pages/envios-admin/envios-admin.module').then( m => m.EnviosAdminPageModule)
   },
