@@ -116,7 +116,6 @@ h2{
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
-    z-index: 9999;
     margin-bottom: 60px;
     border-radius: 20px;
 
@@ -143,4 +142,9 @@ h2{
 .precio{
     color:#4C015D;
     font-weight: bold;
+}
+
+ion-button[slot='fixed'] {
+    top: 50%;
+    right: 20px;
 }
