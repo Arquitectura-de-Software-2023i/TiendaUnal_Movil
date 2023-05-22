@@ -35,6 +35,7 @@ mutation sendmensaje($chat: chatInput!){
   }
 }
 `;
+
 /*
 mutation {
   createMessage(chat: {
