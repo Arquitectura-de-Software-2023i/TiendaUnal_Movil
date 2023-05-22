@@ -15,14 +15,11 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { RouteReuseStrategy } from '@angular/router';
 import { ProductoComponent } from './producto/producto.component';
 import { register } from 'swiper/element/bundle';
-import { register } from 'swiper/element/bundle';
 import { ChatComponent } from './chat/chat.component';
 import {EnviosComponent} from './envios/envios.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
 import {EnviosAdminComponent} from './envios-admin/envios-admin.component';
 
-
-register();
 register();
 
 @NgModule({
