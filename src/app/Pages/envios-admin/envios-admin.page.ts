@@ -8,10 +8,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./envios-admin.page.scss'],
 })
 export class EnviosAdminPage implements OnInit {
-  envios: any[]=[];
+  filteredEnvios: any[] = [];
+  searchKeyword: string;
+  allEnvios: any[]=[];
   hasEnvios: boolean;
   loading = true;
   error: any;
+
+  dateExample = new Date().toISOString();
 
   constructor(
     private apollo:Apollo,
@@ -19,7 +23,8 @@ export class EnviosAdminPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.fetchEnvios();
+    this.fetchEnvios();        
+    console.log(this.filteredEnvios);
   }
 
   
@@ -40,12 +45,30 @@ export class EnviosAdminPage implements OnInit {
         `
       })
       .subscribe(({ data }) => {
-        this.envios = data.allEnvios;        
+        this.allEnvios = data.allEnvios;
+        this.filteredEnvios= data.allEnvios;       
         this.loading = data.loading;
-        this.error = data.error;        
-        console.log(this.envios);
+        this.error = data.error;
+        //console.log("Fetch allenvios:")     
+        //console.log(this.allEnvios);
       });
   };
+
+  handleSearchInputChange(): void {
+    console.log(this.searchKeyword)
+    if (this.searchKeyword==="") {
+      this.filteredEnvios = this.allEnvios;
+    }
+    else {
+      const keyword = this.searchKeyword.toLowerCase();
+      this.filteredEnvios = this.allEnvios.filter(allEnvios =>
+        allEnvios.id.toString().toLowerCase()===(keyword)
+      );
+    }
+    //console.log("-------Filtered envios-------")
+    //console.log(this.filteredEnvios);
+  }
+  
 
 
 }

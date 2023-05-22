@@ -1,12 +1,125 @@
-<ion-content [fullscreen]="true">
-  <ion-toolbar>    
+<ion-header>
+  <ion-toolbar style="height: 40px;">
+    <ion-title>Modificar Envios</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar style="padding-bottom: 5px;">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="user-profile/1"></ion-back-button>
     </ion-buttons>
-    <ion-title>Modificar Envios</ion-title>    
+
+    <ion-searchbar [(ngModel)]="searchKeyword" (ionChange)="handleSearchInputChange()" class="custom" show-clear-button="focus" placeholder="User id"></ion-searchbar>  
   </ion-toolbar>
 
-  <ion-searchbar style="--color:black" placeholder="User id"></ion-searchbar>  
+</ion-header>
 
-  
+<ion-content [fullscreen]="true">
+
+  <div *ngIf="loading" class="loading-container">
+    <ion-spinner class = "custom-spinner" name="circular"></ion-spinner>
+  </div>
+
+  <div *ngIf="filteredEnvios" > 
+    <ion-list>
+      <ion-item *ngFor="let envio of filteredEnvios">
+        <ion-label>
+          <h2>Envio #{{envio.id.toString().padStart(5, '0')}}</h2>
+          <p>Creado el: {{ envio.fecha_creacion }}</p>  
+        </ion-label>
+
+        <ion-label slot=end>
+          <ion-list>
+            <ion-item>
+              <ion-select [(ngModel)]="envio.estado" aria-label="Estado" interface="popover" >
+                <ion-select-option value="En proceso">En proceso</ion-select-option>
+                <ion-select-option value="Enviado">Enviado</ion-select-option>
+                <ion-select-option value="Listo para recoger">Listo para recoger</ion-select-option>
+                <ion-select-option value="Cancelado">Cancelado</ion-select-option>
+                <ion-select-option value="Terminado">Terminado</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+
+        
+
+        </ion-label>
+
+
+      </ion-item>
+    </ion-list>
+
+  </div>
+
+
+<!-- + 
+  <div *ngIf="filteredEnvios" >
+    <ion-accordion-group [multiple]="true" expand="compact" *ngFor="let envio of filteredEnvios">
+
+      <ion-accordion toggleIcon="caret-down-circle">
+        <ion-item slot="header">
+
+          <ion-label>#{{envio.id.toString().padStart(5, '0')}}</ion-label>
+
+          
+          
+          
+          <ion-label slot="end">
+
+            
+              
+                <ion-select [(ngModel)]="envio.estado" aria-label="Estado" interface="popover" >
+                  <ion-select-option value="En proceso">En proceso</ion-select-option>
+                  <ion-select-option value="Enviado">Enviado</ion-select-option>
+                  <ion-select-option value="Listo para recoger">Listo para recoger</ion-select-option>
+                  <ion-select-option value="Cancelado">Cancelado</ion-select-option>
+                  <ion-select-option value="Terminado">Terminado</ion-select-option>
+                </ion-select>
+              
+            
+
+            <p>{{dateExample | date}}</p>
+            <p>popo</p>
+          </ion-label>
+
+          <ion-label>
+            <p>popo</p>
+            <h6 style="color: #FFA800;">popo</h6>
+          </ion-label>
+
+        </ion-item>
+
+        <ion-datetime
+          slot="content"
+          displayFormat="MMMM YY"
+          [(ngModel)]="dateExample"
+          size="cover"
+          presentation="date"
+        ></ion-datetime>
+      </ion-accordion>
+
+    </ion-accordion-group>
+
+  </div>
+  -->
+
+  <ion-list>
+    <ion-item id="open-modal">
+      <ion-label>Modal - Date selection</ion-label>
+      <ion-note slot="end">{{dateExample | date}}</ion-note>
+    </ion-item>
+    <ion-modal trigger="open-modal" >
+      <ng-template>
+        <ion-datetime
+          presentation="date"
+          [showDefaultButtons]="true"
+          [(ngModel)]="dateExample"
+          size="cover"
+        ></ion-datetime>
+      </ng-template>
+    </ion-modal>
+  </ion-list>
+
+
+
+
 </ion-content>
