@@ -7,12 +7,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content  class="reverse-list" #content  id="content">
   
   <ion-item *ngFor="let mensaje of mensajes; let i = index"  [ngClass]="getClaseRemitente(i)">
     <ion-label>{{ mensaje }}</ion-label>
   </ion-item>
-  
+  <div id="content-end"></div>
 </ion-content>
 
   <ion-footer>

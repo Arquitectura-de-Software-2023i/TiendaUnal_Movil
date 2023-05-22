@@ -71,3 +71,7 @@ ion-footer {
     --inner-border-width: 0px;
     margin: 20px 60px 20px 4px;
 }
+.reverse-list {
+    display: flex;
+    flex-direction: column-reverse;
+}
