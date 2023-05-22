@@ -1,6 +1,7 @@
 import { Apollo, gql } from 'apollo-angular';
 import { Component, OnInit } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
+import { resourceLimits } from 'worker_threads';
 
 const GET_PRODUCTO = gql`
 query getProducto($id: Int!){
@@ -113,6 +114,7 @@ export class CarritoComponent  implements OnInit {
   constructor(private apollo: Apollo, private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit() {
+    console.log(usuario);
     this.apollo
       .watchQuery({
         query: GET_CARRITO_BY_USUARIO,
@@ -121,6 +123,7 @@ export class CarritoComponent  implements OnInit {
         },
       })
       .valueChanges.subscribe((result: any) => {
+        console.log(result);
         this.cartId = result.data?.carritoByIdUsuario[0].idCarrito;
         this.apollo
           .watchQuery({

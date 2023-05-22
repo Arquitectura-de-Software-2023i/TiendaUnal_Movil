@@ -25,6 +25,8 @@ query mensajesuser($Usuario_id:  Int!){
     Usuario_id
     Administrador_id
     Remitente
+    createdAt
+    updatedAt
   }
 }
 `;

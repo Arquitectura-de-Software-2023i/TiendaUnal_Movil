@@ -16,8 +16,8 @@ query getProducto($id: Int!){
 `;
 
 const GET_CARRITO_BY_USUARIO = gql`
-  query {
-   carritoByIdUsuario(idusuario:1){
+  query idcarritobyuser($idusuario: Int!) {
+   carritoByIdUsuario(idusuario:$idusuario){
     idCarrito
     totalprecio    
     totalproductos
@@ -49,6 +49,8 @@ interface Comprar_producto{
   precio?: number
   cantidad?: number
 }
+
+const usuario = localStorage.getItem("userID");
 
 @Component({
   selector: 'app-producto',
@@ -96,6 +98,10 @@ export class ProductoComponent implements OnInit {
 
     this.apollo.watchQuery({
       query: GET_CARRITO_BY_USUARIO,
+      variables: {
+        idusuario: usuario,
+      },
+
     }).valueChanges.subscribe((result: any) => {
 
       this.cartId = result.data?.carritoByIdUsuario[0].idCarrito;
