@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { ActivatedRoute } from '@angular/router';
 
-
 @Component({
   selector: 'app-envios',
-  templateUrl: './envios.page.html',
-  styleUrls: ['./envios.page.scss'],
+  templateUrl: './envios.component.html',
+  styleUrls: ['./envios.component.scss'],
 })
-export class EnviosPage implements OnInit {
+export class EnviosComponent implements OnInit {
   userid: String;
   envios: any[]=[];
   hasEnvios: boolean;
@@ -117,7 +116,5 @@ export class EnviosPage implements OnInit {
         return(data.productById);
       });
   };
-  
-  
-  
+
 }
