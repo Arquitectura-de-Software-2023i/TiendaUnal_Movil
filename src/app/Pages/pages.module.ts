@@ -34,6 +34,7 @@ register();
     IonicModule,
     AppRoutingModule,
     FormsModule,
+    RouterModule.forRoot([])
     
   
     
