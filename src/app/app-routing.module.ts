@@ -72,6 +72,10 @@ const routes: Routes = [
     path: 'envios-admin',
     loadChildren: () => import('./Pages/envios-admin/envios-admin.module').then( m => m.EnviosAdminPageModule)
   },
+  {
+    path: 'mod-envio',
+    loadChildren: () => import('./Pages/mod-envio/mod-envio.module').then( m => m.ModEnvioPageModule)
+  },
 
 
 ];

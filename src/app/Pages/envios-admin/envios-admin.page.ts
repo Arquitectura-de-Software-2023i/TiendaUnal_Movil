@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
-import { ActivatedRoute } from '@angular/router'; 
+import { ActivatedRoute } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-envios-admin',
@@ -15,11 +16,11 @@ export class EnviosAdminPage implements OnInit {
   loading = true;
   error: any;
 
-  dateExample = new Date().toISOString();
-
   constructor(
     private apollo:Apollo,
-    private activatedRoute:ActivatedRoute
+    private activatedRoute:ActivatedRoute,
+
+    
   ) { }
 
   ngOnInit() {
