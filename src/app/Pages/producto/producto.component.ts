@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
@@ -68,7 +69,7 @@ export class ProductoComponent implements OnInit {
   cartId: number
   producto_comprado: Comprar_producto
 
-  constructor(public apollo: Apollo, private route: ActivatedRoute) { }
+  constructor(private toastController: ToastController, public apollo: Apollo, private route: ActivatedRoute) { }
 
 
   ngOnInit() {
@@ -122,12 +123,43 @@ export class ProductoComponent implements OnInit {
         })
         .subscribe((result) => {
           console.log(result);
+          this.ToastOk('top')
+
+        }, (err) =>{
+          console.log(err)
+          this.ToastErr('bottom')
         });
 
 
     })
 
 
+  }
+
+  async ToastOk(position: 'top') {
+    const toast = await this.toastController.create({
+      message: 'Producto añadido al carrito',
+      duration: 1500,
+      position: position,
+      color: 'success',
+      cssClass: 'custom-toast'
+
+    });
+
+    await toast.present();
+  }
+
+  async ToastErr(position: 'bottom') {
+    const toast = await this.toastController.create({
+      message: 'No se puedo añadir al carrito',
+      duration: 1500,
+      position: position,
+      color: 'danger',
+      cssClass: 'custom-toast'
+
+    });
+
+    await toast.present();
   }
 
 }

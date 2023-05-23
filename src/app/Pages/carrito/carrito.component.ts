@@ -5,6 +5,7 @@ import { resourceLimits } from 'worker_threads';
 import { ActivatedRoute } from '@angular/router';
 import { Platform } from '@ionic/angular';
 
+
 const GET_PRODUCTO = gql`
 query getProducto($id: Int!){
   productById(id: $id){
@@ -119,6 +120,7 @@ export class CarritoComponent  implements OnInit {
 
 
   ngOnInit() {
+
     
     this.apollo
       .watchQuery({
