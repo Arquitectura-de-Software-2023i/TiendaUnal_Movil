@@ -77,7 +77,7 @@ export class HomeComponent  implements OnInit {
       query: GET_CHATS,
     }).valueChanges.subscribe((result: any) => {
       this.chats = result.data?.allMessage.reduce((chats: string[], item: any) => {
-        if (item.Remitente === 'Administrador') {
+        if (item.Remitente === 'Usuario') {
           const usuario = item.Usuario_id; // Reemplaza "NombreUsuario" con la propiedad correcta que contiene el nombre del usuario en tu estructura de datos
           if (!chats.includes(usuario)) {
             chats.push(usuario);

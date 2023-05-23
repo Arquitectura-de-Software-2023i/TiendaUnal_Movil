@@ -50,7 +50,8 @@ mutation {
   }
 }
 */
-const usuario = localStorage.getItem("userID");
+const usuariostring = localStorage.getItem("userID");
+const usuario = parseInt(usuariostring, 10);
 
 @Component({
   selector: 'app-chat',
