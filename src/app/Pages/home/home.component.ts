@@ -44,7 +44,7 @@ const GET_NOMBRE = gql`
           }
         `;
 
-const usuario = localStorage.getItem("userID");
+
 
 @Component({
   selector: 'app-home',
