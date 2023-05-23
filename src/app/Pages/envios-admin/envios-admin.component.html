@@ -32,32 +32,34 @@
 
   <div *ngIf="filteredEnvios" > 
     <ion-list>
-      <ion-item *ngFor="let envio of filteredEnvios">
-        <ion-label>
-          <h1 style="color:#FFA800">#{{envio.id.toString().padStart(5, '0')}}</h1>
-          <p>Creado el: {{ envio.fecha_creacion }}</p>  
-          <p>Se entrega el: {{ envio.fecha_entrega }}</p> 
-        </ion-label>
+  <ion-item *ngFor="let envio of filteredEnvios">
+    <ion-label>
+      <h1 style="color:#FFA800">#{{envio.id.toString().padStart(5, '0')}}</h1>
+      <p>Creado el: {{ envio.fecha_creacion }}</p>  
+      <p>Se entrega el: {{ envio.fecha_entrega }}</p> 
+    </ion-label>
 
-        <ion-label slot=end>
-          <ion-list>
+    <ion-label slot=end>
+      <ion-list>
+        <ion-item>
+          <ion-select
+            [(ngModel)]="envio.estado"
+            okText="Cambiar"
+            cancelText="Cancelar"
+            (ionChange)="handleChange($event)"
+          >
+            <ion-select-option value="En proceso">En proceso</ion-select-option>
+            <ion-select-option value="Enviado">Enviado</ion-select-option>
+            <ion-select-option value="Listo para recoger">Listo para recoger</ion-select-option>
+            <ion-select-option value="Cancelado">Cancelado</ion-select-option>
+            <ion-select-option value="Terminado">Terminado</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-label>
+  </ion-item>
+</ion-list>
 
-            <ion-item>
-              <ion-select  [(ngModel)]="envio.estado" okText="Cambiar" cancelText="Cancelar">
-                <ion-select-option value="En proceso">En proceso</ion-select-option>
-                <ion-select-option value="Enviado">Enviado</ion-select-option>
-                <ion-select-option value="Listo para recoger">Listo para recoger</ion-select-option>
-                <ion-select-option value="Cancelado">Cancelado</ion-select-option>
-                <ion-select-option value="Terminado">Terminado</ion-select-option>
-              </ion-select>
-            </ion-item>
-            
-          </ion-list>
-          
-        </ion-label>
-
-      </ion-item>
-    </ion-list>
 
   </div>
 
