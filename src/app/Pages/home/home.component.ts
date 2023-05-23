@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { Apollo, gql } from 'apollo-angular';
 
@@ -28,6 +28,22 @@ const GET_CHATS = gql`
 }
 `;
 
+const GET_NOMBRE = gql`
+          query cuentaById($id: Int!) {
+            cuentaById(id: $id) {
+              id,
+              idUser,
+              lastName,
+              firstName,
+              phoneNumber,
+              address,
+              timeCreated,
+              city
+            }
+          }
+        `;
+
+const usuario = localStorage.getItem("userID");
 
 @Component({
   selector: 'app-home',
@@ -36,7 +52,7 @@ const GET_CHATS = gql`
 })
 export class HomeComponent  implements OnInit {
 
-  constructor(private apollo: Apollo) { }
+  constructor(private apollo: Apollo, private changeDetectorRef: ChangeDetectorRef) { }
   Products: any[] = [];
   chats: any[] = [];
   usuarios: any[] = [];
@@ -61,7 +77,23 @@ export class HomeComponent  implements OnInit {
         }
         return chats;
       }, []);
-      console.log(this.chats)
+      console.log(this.chats);
+      this.chats.forEach((itemId: any) => {
+        this.apollo
+          .watchQuery({
+            query: GET_NOMBRE,
+            variables: {
+              id: itemId,
+            },
+          })
+          .valueChanges.subscribe((result: any) => {
+            const newItem = result.data?.cuentaById.firstName;
+            this.usuarios.push(newItem);
+            this.changeDetectorRef.detectChanges();
+            console.log(result);
+          });
+      });
+      
     });
 
   }
