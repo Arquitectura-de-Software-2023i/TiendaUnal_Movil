@@ -17,18 +17,24 @@ export class EnviosAdminComponent  implements OnInit {
   loading = true;
   error: any;
 
+  updatedEnvios: { [key: number]: any } = {};
+
   constructor(
     private apollo:Apollo,
-    private activatedRoute:ActivatedRoute,
-
-    
+    private activatedRoute:ActivatedRoute,    
   ) { }
 
   ngOnInit() {
     this.fetchEnvios();        
     console.log(this.filteredEnvios);
+
+    this.filteredEnvios.forEach((envio) => {
+      this.updatedEnvios[envio.id] = { estado: envio.estado };
+    });
+
   }
   
+  //Traer TODOS los envios
   fetchEnvios(): void {
     this.apollo
       .query<any>({
@@ -55,6 +61,11 @@ export class EnviosAdminComponent  implements OnInit {
       });
   };
 
+  //Método para hacer update a un envío
+  handleChange(e:any) {
+    console.log('ionChange fired with value: ' + e.detail.value);
+  }
+  
   updateEnvio(id:number,updatedEnvio:any): void {
     this.apollo
       .mutate<any>({
@@ -76,9 +87,22 @@ export class EnviosAdminComponent  implements OnInit {
         }
       })
       .subscribe(({ data }) => {
-        console.log(data.updateEnvio);
+        console.log(data.updateEnvio)
+        return(data.updateEnvio)
       });
   };
+
+
+  updateEnvioState(id:number,nuevoEstado:String): void {
+    this.updatedEnvios[id]={
+      ...this.updatedEnvios[id],
+      estado: nuevoEstado};
+
+    this.updateEnvio(this.updatedEnvios[id].id, this.updatedEnvios[id]);
+    
+  }
+
+
 
   handleSearchInputChange(): void {
     console.log(this.searchKeyword)

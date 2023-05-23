@@ -10,10 +10,14 @@ import { ChatComponent } from './Pages/chat/chat.component';
 import { EnviosComponent } from './Pages/envios/envios.component';
 import {UserProfileComponent} from './Pages/user-profile/user-profile.component';
 import {EnviosAdminComponent} from './Pages/envios-admin/envios-admin.component';
+import { CategoriasComponent } from './Pages/categorias/categorias.component';
 
 const routes: Routes = [
 
-
+  {
+    path: 'categoria',
+    component: CategoriasComponent
+  },
   {
     path: 'carrito',
     component: CarritoComponent
