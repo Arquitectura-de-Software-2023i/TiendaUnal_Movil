@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
   cuenta: account = {
 
     username: '',
-    idRol: 1,
+    idRol: 2,
     password: '',
     email: '',
 
