@@ -19,6 +19,7 @@ import { ChatComponent } from './chat/chat.component';
 import {EnviosComponent} from './envios/envios.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
 import {EnviosAdminComponent} from './envios-admin/envios-admin.component';
+import { CategoriasComponent } from './categorias/categorias.component';
 
 register();
 
@@ -33,6 +34,7 @@ register();
     EnviosComponent,  
     UserProfileComponent,
     EnviosAdminComponent,  
+    CategoriasComponent,
   ],
   imports: [
     CommonModule,
