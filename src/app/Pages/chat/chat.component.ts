@@ -50,6 +50,7 @@ mutation {
   }
 }
 */
+const usuario = localStorage.getItem("userID");
 
 @Component({
   selector: 'app-chat',
@@ -61,11 +62,9 @@ export class ChatComponent  implements OnInit {
 
   mensajes: any[] = [];
   remitentes: any[] = [];
-  usuario = 76;
   newMessage: string = '';
   administrador = 1;
-  token_us = "6451a5d6046ba0de39316c0f";
-  token_ad = "641f9c1cff0bef295a20b834";
+
 
   constructor(private apollo: Apollo, private changeDetectorRef: ChangeDetectorRef) { }
 
@@ -74,7 +73,7 @@ export class ChatComponent  implements OnInit {
       .watchQuery({
         query: GET_MENSAJES_BY_USER,
         variables: {
-          Usuario_id: this.usuario,
+          Usuario_id: usuario,
         },
       })
       .valueChanges.subscribe((result: any) => {
@@ -84,6 +83,7 @@ export class ChatComponent  implements OnInit {
         this.remitentes = result.data?.allMessageByUserId.map(
           (item: any) => item.Remitente
         );
+        console.log(result);
         this.scrollToBottom();
       });
     
@@ -97,14 +97,15 @@ export class ChatComponent  implements OnInit {
           mutation: SEND_MENSAJES,
           variables: { 
             chat: {
-              Usuario_id: this.token_us,
-              Administrador_id: this.token_ad,
+              Usuario_id: usuario,
+              Administrador_id: this.administrador,
               Mensaje: this.newMessage,
               Remitente: "Usuario"
             } 
           },
         })
         .subscribe(({ data }: any) => {
+          console.log(data);
           this.mensajes.push(this.newMessage);
           this.remitentes.push("Usuario")
           this.changeDetectorRef.detectChanges();
