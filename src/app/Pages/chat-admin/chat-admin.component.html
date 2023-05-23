@@ -1,3 +1,26 @@
-<p>
-  chat-admin works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons [routerLink]="['/home']" slot="start">
+      <ion-icon style="font-size: 2rem;" name="chevron-back-outline"></ion-icon>
+    </ion-buttons>
+
+    <ion-title style="font-size: 25px;">Chat de ayuda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="reverse-list" #content id="content">
+
+  <ion-item *ngFor="let mensaje of mensajes; let i = index" [ngClass]="getClaseRemitente(i)">
+    <ion-label>{{ mensaje }}</ion-label>
+  </ion-item>
+  <div id="content-end"></div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-input [(ngModel)]="newMessage" placeholder="Escribe tu mensaje"></ion-input>
+    <ion-button expand="block" (click)="sendMessage()" slot="end">
+      <ion-icon slot="icon-only" name="send" class="icono"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
