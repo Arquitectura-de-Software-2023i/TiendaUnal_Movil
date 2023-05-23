@@ -27,9 +27,40 @@ ion-menu::part(backdrop) {
     color: #4C015D;
   }
 
+
   .label-menu{
     font-size: 1.4em; 
     font-weight: bold; 
     color: #4C015D;
 
+  }
+
+  h5{
+    margin-top: 3px;
+    margin-bottom: 3px;    
+  }
+
+  h1{
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .userinfo-container{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    background-color: #FFA800;    
+  }
+
+  .title{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 38px;
+    font-weight: bold;
+    color: #4C015D;    
   }

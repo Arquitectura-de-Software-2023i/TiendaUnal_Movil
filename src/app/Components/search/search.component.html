@@ -11,9 +11,17 @@
 
 
 
-    <div style="height: 300px;">
+    <div *ngIf="userdata" class="userinfo-container">      
 
-        INFORMACIÓN DE LA CUENTA AQUÍ
+        <h1 class="infousuario-title" style="color:#4C015D"> 
+          <ion-icon name="person"></ion-icon>
+         Tus datos:
+        </h1>
+        <h5> <span class="title">Nombre:   </span> <span style="color:white;">{{userdata.firstName}}</span></h5>
+        <h5> <span class="title">Apellido: </span> <span style="color:white;">{{userdata.lastName}}</span></h5>
+        <h5> <span class="title">Ciudad:   </span> <span style="color:white;">{{userdata.city}}</span></h5>
+        <h5> <span class="title">Dirección:</span> <span style="color:white;">{{userdata.address}}</span></h5>
+        <h5> <span class="title">Número:   </span> <span style="color:white;">{{userdata.phoneNumber}}</span></h5>        
 
     </div>
 
@@ -33,9 +41,9 @@
       <ion-label class="label-menu">Carrito</ion-label>
     </ion-item>
 
-    <ion-item [routerLink]="['/user-profile']">
-      <ion-icon style="font-size: 3em;" name="person" slot="start" ></ion-icon>
-      <ion-label class="label-menu">Mi cuenta</ion-label>
+    <ion-item [routerLink]="['/envios', getUserIDDataFromLocalStorage()]">
+      <ion-icon style="font-size: 3em;" name="cube-outline" slot="start" ></ion-icon>
+      <ion-label class="label-menu">Mis envios</ion-label>
     </ion-item>
 
     
