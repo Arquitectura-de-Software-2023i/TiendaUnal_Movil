@@ -1,11 +1,11 @@
 
   <!-- -->
-  <ion-header [translucent]="true">
-    <ion-toolbar>    
+  <ion-header  >
+    <ion-toolbar style=" --background: #4C015D; ">    
       <ion-buttons slot="start">
         <ion-back-button defaultHref="home"></ion-back-button>
       </ion-buttons>
-      <ion-title>Envios</ion-title>    
+      <ion-title style="color: white;">Envios</ion-title>    
     </ion-toolbar>
   </ion-header>
 
@@ -28,12 +28,12 @@
           <ion-item slot="header">
 
             <ion-label>
-              <h2>Envio #{{envio.id.toString().padStart(5, '0')}}</h2>
-              <p>Creado el: {{ envio.fecha_creacion }}</p>  
+              <h2 style="color:white;" >Envio #{{envio.id.toString().padStart(5, '0')}}</h2>
+              <p style="color:white;">Creado el: {{ envio.fecha_creacion }}</p>  
             </ion-label>
 
             <ion-label slot="end">
-              <p>{{envio.estado}}</p>
+              <p style="color:white;">{{envio.estado}}</p>
               <h6 style="color: #FFA800;">${{envio.precio_total}}</h6>
             </ion-label>
                        
@@ -42,7 +42,7 @@
           <div slot="content">            
             <div *ngFor="let detail of envio.details">
 
-              <ion-item style="--background: #d2ced3;" slot="header">
+              <ion-item style="--background: #bab6bb;" slot="header">
 
                 <ion-thumbnail slot="start" >
                   <img class="imagen"  src="../../../assets/images.png">

@@ -9,6 +9,7 @@ ion-content {
 }
 ion-header{
     ion-toolbar{
+        --color: white;
         --background: #4C015D;
         
     }
@@ -61,9 +62,13 @@ ion-footer {
         --highlight-height: 0px;
         --inner-border-width: 0px;
         margin: 20px 4px 20px 60px;
+        --color: white;
+
 }
 
 .administador-class {
+  
+        
     --background: #FFA800;
     --inner-padding-end: 0px;
     --inner-background-color: #FFFFFF;
@@ -74,4 +79,10 @@ ion-footer {
 .reverse-list {
     display: flex;
     flex-direction: column-reverse;
+}
+
+.angelito{
+    overflow: hidden;
+    word-wrap: break-word;
+
 }
