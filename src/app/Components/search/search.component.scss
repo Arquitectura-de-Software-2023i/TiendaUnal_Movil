@@ -50,17 +50,23 @@ ion-menu::part(backdrop) {
 
   .userinfo-container{
     height: 300px;
+    width: 80%;
+    margin-top: 15px;    
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #FFA800;
+    border: 5px solid #4C015D;
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: center;
     justify-content: center;
-    background-color: #FFA800;    
+    overflow: hidden;    
   }
 
   .title{
     margin-top: 5px;
     margin-bottom: 5px;
-    margin-left: 38px;
+    margin-left: 5px;
     font-weight: bold;
     color: #4C015D;    
   }
