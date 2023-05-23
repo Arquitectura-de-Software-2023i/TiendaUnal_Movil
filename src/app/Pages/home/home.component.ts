@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy, NavController } from '@ionic/angular';
 import { Apollo, gql } from 'apollo-angular';
+import { Router } from 'express';
 
 
 const GET_PRODUCTOS = gql`
@@ -52,7 +53,7 @@ const usuario = localStorage.getItem("userID");
 })
 export class HomeComponent  implements OnInit {
 
-  constructor(private apollo: Apollo, private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private apollo: Apollo, private changeDetectorRef: ChangeDetectorRef, private navCtrl: NavController) { }
   Products: any[] = [];
   chats: any[] = [];
   usuarios: any[] = [];
@@ -96,6 +97,10 @@ export class HomeComponent  implements OnInit {
       
     });
 
+  }
+
+  redirectToPageWithId(pageRoute: string, id: number) {
+    this.navCtrl.navigateForward(`${pageRoute}/${id}`);
   }
 
 }

@@ -50,8 +50,8 @@
 
       </ion-row>
     </ion-grid>
-    <div *ngIf="usuarios" class="usuarios-admins">
-      <ion-item *ngFor="let user of usuarios; let i = index" class="afuera-items">
+    <div *ngIf="usuarios" class="usuarios-admins" >
+      <ion-item *ngFor="let user of usuarios; let i = index" class="afuera-items" (click)="redirectToPageWithId('/chat-admin', chats[i])">
         <ion-label>
           <h2>{{user}}</h2>
         </ion-label>

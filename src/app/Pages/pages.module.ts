@@ -20,6 +20,7 @@ import {EnviosComponent} from './envios/envios.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
 import {EnviosAdminComponent} from './envios-admin/envios-admin.component';
 import { CategoriasComponent } from './categorias/categorias.component';
+import { ChatAdminComponent } from './chat-admin/chat-admin.component';
 
 register();
 
@@ -35,6 +36,7 @@ register();
     UserProfileComponent,
     EnviosAdminComponent,  
     CategoriasComponent,
+    ChatAdminComponent
   ],
   imports: [
     CommonModule,

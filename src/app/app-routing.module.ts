@@ -11,6 +11,7 @@ import { EnviosComponent } from './Pages/envios/envios.component';
 import {UserProfileComponent} from './Pages/user-profile/user-profile.component';
 import {EnviosAdminComponent} from './Pages/envios-admin/envios-admin.component';
 import { CategoriasComponent } from './Pages/categorias/categorias.component';
+import { ChatAdminComponent } from './Pages/chat-admin/chat-admin.component';
 
 const routes: Routes = [
 
@@ -30,7 +31,10 @@ const routes: Routes = [
     path: 'producto/:id',
     component: ProductoComponent
   },
-
+  {
+    path: 'chat-admin/:id',
+    component: ChatAdminComponent
+  },
   {
     path: 'login',
     component: LoginComponent
