@@ -52,8 +52,9 @@ export class LoginComponent implements OnInit {
         (result: any) => {
           console.log(result);
           this.ToastOk('bottom')
-          console.log(result.data?.login.idUsuario)
+          console.log(result.data?.login.idRol)
           localStorage.setItem("userID", result.data?.login.idUsuario );
+          localStorage.setItem("Rol", result.data?.login.idRol );
           this.router.navigate(['/home'])
 
         },

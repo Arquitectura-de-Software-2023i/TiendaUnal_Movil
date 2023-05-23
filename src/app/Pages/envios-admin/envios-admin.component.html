@@ -43,10 +43,10 @@
       <ion-list>
         <ion-item>
           <ion-select
-            [(ngModel)]="envio.estado"
+            placeholder="{{envio.estado}}"
             okText="Cambiar"
             cancelText="Cancelar"
-            (ionChange)="handleChange($event)"
+            (ionChange)="handleChange($event,envio)"
           >
             <ion-select-option value="En proceso">En proceso</ion-select-option>
             <ion-select-option value="Enviado">Enviado</ion-select-option>

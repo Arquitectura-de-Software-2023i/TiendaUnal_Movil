@@ -10,7 +10,7 @@ import { ModalController } from '@ionic/angular';
 })
 export class EnviosAdminComponent  implements OnInit {
 
-  filteredEnvios: any[] = [];
+  public filteredEnvios: any[] = [];
   searchKeyword: string;
   allEnvios: any[]=[];
   hasEnvios: boolean;
@@ -53,7 +53,7 @@ export class EnviosAdminComponent  implements OnInit {
       })
       .subscribe(({ data }) => {
         this.allEnvios = data.allEnvios;        
-        this.filteredEnvios= data.allEnvios;       
+        this.filteredEnvios=Array.from(data.allEnvios);
         this.loading = data.loading;
         this.error = data.error;
         //console.log("Fetch allenvios:")     
@@ -62,15 +62,25 @@ export class EnviosAdminComponent  implements OnInit {
   };
 
   //Método para hacer update a un envío
-  handleChange(e:any) {
-    console.log('ionChange fired with value: ' + e.detail.value);
+  handleChange(e:any, envio:any) {        
+    let currentEnvio=envio;
+    
+    const updatedEnvio={      
+      id_cliente: currentEnvio.id_cliente,
+      precio_total: currentEnvio.precio_total,
+      estado: e.detail.value,
+      fecha_creacion: currentEnvio.fecha_creacion,
+      fecha_entrega: currentEnvio.fecha_entrega,
+    }
+    console.log(updatedEnvio);
+    this.updateEnvio(envio.id,updatedEnvio);
   }
   
   updateEnvio(id:number,updatedEnvio:any): void {
     this.apollo
       .mutate<any>({
         mutation: gql`
-          mutation updateEnvio($id:Int!,$envio:Envio!){
+          mutation updateEnvio($id:Int!,$envio:SecondEnvioInput!){
             updateEnvio(id:$id,envio:$envio){
               id,
               id_cliente,
@@ -91,17 +101,6 @@ export class EnviosAdminComponent  implements OnInit {
         return(data.updateEnvio)
       });
   };
-
-
-  updateEnvioState(id:number,nuevoEstado:String): void {
-    this.updatedEnvios[id]={
-      ...this.updatedEnvios[id],
-      estado: nuevoEstado};
-
-    this.updateEnvio(this.updatedEnvios[id].id, this.updatedEnvios[id]);
-    
-  }
-
 
 
   handleSearchInputChange(): void {

@@ -12,8 +12,8 @@
         <ion-icon style="font-size: 6em; "  [routerLinkActive]="['activo']" name="cart"></ion-icon>
       </ion-tab-button>
     
-    <ion-tab-button [routerLink]="['/user-profile']" >
-      <ion-icon style="font-size: 6em;"  [routerLinkActive]="['activo']" name="person"></ion-icon>
+    <ion-tab-button [routerLink]="['/envios', getUserIDDataFromLocalStorage()]" >
+      <ion-icon style="font-size: 6em;"  [routerLinkActive]="['activo']" name="cube-outline"></ion-icon>
     </ion-tab-button>
   </ion-tab-bar>
   
