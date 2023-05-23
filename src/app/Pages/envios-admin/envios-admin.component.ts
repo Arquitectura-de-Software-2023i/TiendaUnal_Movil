@@ -3,6 +3,7 @@ import { Apollo, gql } from 'apollo-angular';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-envios-admin',
   templateUrl: './envios-admin.component.html',
