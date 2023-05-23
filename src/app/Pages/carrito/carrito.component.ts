@@ -96,7 +96,8 @@ mutation crearTransccion($transaccion: TransaccionesInput!){
 }
 `;
 
-const usuario= localStorage.getItem("userID");
+const usuariostring = localStorage.getItem("userID");
+const usuario = parseInt(usuariostring, 10);
 
 @Component({
   selector: 'app-carrito',
@@ -244,7 +245,7 @@ export class CarritoComponent  implements OnInit {
       .mutate({
         mutation: CREATE_ENVIO,
         variables: {
-          id_cliente:5 //usuariuo id
+          id_cliente:usuario, //usuariuo id
         }
         ,
       })
@@ -255,7 +256,7 @@ export class CarritoComponent  implements OnInit {
           .mutate({
             mutation: VACIAR_CARRO,
             variables: {
-              idCarrito: 6 // CAMBIAR POR --->this.cartId
+              idCarrito:this.cartId,
             }
             ,
           })
@@ -267,7 +268,7 @@ export class CarritoComponent  implements OnInit {
                 mutation: CREAR_TRANSACCION,
                 variables: {
                   transaccion: {
-                    idCarrito: 6, // CAMBIAR POR --->this.cartId
+                    idCarrito: this.cartId,
                     estadoTransaccion: "Aceptada",
                     pagoTotal: this.total_numero
                   }
