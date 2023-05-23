@@ -70,3 +70,25 @@ ion-menu::part(backdrop) {
     font-weight: bold;
     color: #4C015D;    
   }
+
+  ion-button {
+    --background: #4C015D;
+    --background-activated: #4C015D;
+    --background-focused: #4C015D;
+    --color: #FFA800;
+    font-weight: bold;
+    
+
+  
+  
+    --border-radius: 0;
+    --border-color: #4C015D;
+    --border-style: solid;
+    --border-width: 1px;
+  
+    --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
+  
+  
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+  }

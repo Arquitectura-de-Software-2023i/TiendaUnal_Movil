@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
 
 
@@ -12,13 +13,26 @@ export class SearchComponent  implements OnInit {
   userdata:any;
   loading = true;
   error:any;
+  rol_user: String
 
   constructor(
     private apollo:Apollo,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.fetchUserData();
+    this.rol_user = localStorage.getItem('Rol')
+    console.log(this.rol_user)
+
+  }
+
+  logout(){
+
+    localStorage.clear();
+    this.router.navigate(['/login'])
+
+
   }
 
   getUserIDDataFromLocalStorage() {

@@ -58,7 +58,14 @@ export class HomeComponent  implements OnInit {
   chats: any[] = [];
   usuarios: any[] = [];
 
+  rol_user: String
   ngOnInit() {
+
+
+    this.rol_user = localStorage.getItem('Rol')
+    console.log(this.rol_user)
+
+    
     this.apollo.watchQuery({
       query: GET_PRODUCTOS,
     }).valueChanges.subscribe((result: any) => {

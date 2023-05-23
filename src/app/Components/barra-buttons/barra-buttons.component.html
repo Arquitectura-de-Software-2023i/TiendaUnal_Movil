@@ -1,6 +1,6 @@
 
   <ion-tab-bar  style="height: 60px;" slot="bottom">
-    <ion-tab-button [routerLink]="['/categoria']">
+    <ion-tab-button [hidden]="this.rol_user=='1'"  [routerLink]="['/categoria']">
       <ion-icon style="font-size: 6em;"  name="pricetags"></ion-icon>
     </ion-tab-button>
     <ion-tab-button [routerLink]="['/home']">
@@ -8,7 +8,7 @@
     </ion-tab-button>
 
  
-      <ion-tab-button  [routerLink]="['/carrito']"  >
+      <ion-tab-button [hidden]="this.rol_user=='1'"  [routerLink]="['/carrito']"  >
         <ion-icon style="font-size: 6em; "  [routerLinkActive]="['activo']" name="cart"></ion-icon>
       </ion-tab-button>
     

@@ -2,7 +2,7 @@
 
 <app-search></app-search>
 
-<ion-content class="ion-contenedor">
+<ion-content [hidden]="this.rol_user=='1'"  class="ion-contenedor">
     <swiper-container
     [initialSlide]="1"
     [centeredSlides]="true"
@@ -50,13 +50,22 @@
 
       </ion-row>
     </ion-grid>
-    <div *ngIf="usuarios" class="usuarios-admins" >
-      <ion-item *ngFor="let user of usuarios; let i = index" class="afuera-items" (click)="redirectToPageWithId('/chat-admin', chats[i])">
-        <ion-label>
-          <h2>{{user}}</h2>
-        </ion-label>
-      </ion-item>
-    </div> 
+
+
+    
+
+</ion-content>
+
+
+<ion-content class="ion-contenedor" [hidden]="this.rol_user=='2'" >
+  
+  <div *ngIf="usuarios" class="usuarios-admins" >
+    <ion-item *ngFor="let user of usuarios; let i = index" class="afuera-items" (click)="redirectToPageWithId('/chat-admin', chats[i])">
+      <ion-label>
+        <h2>{{user}}</h2>
+      </ion-label>
+    </ion-item>
+  </div> 
 
 </ion-content>
 
