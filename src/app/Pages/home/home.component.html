@@ -9,9 +9,9 @@
     [autoplay]="true"
     [spaceBetween]="20"
     [pagination]="{clickeable: true, dynamicBullets: true}"
-    
-    
-    
+
+
+
     >
       <swiper-slide>
         <img  src="..\assets\slide\1.jpg" alt="">
@@ -29,15 +29,15 @@
     <ion-grid>
       <ion-row>
         <ion-col  *ngFor="let prod of Products ; let i = index" size="6" size-md="4" size-lg="2">
-        
+
           <div style="text-align: center">
             <div>
               <a [routerLink]="['/producto', prod.idProducto]" >
                 <img class="imagen-fondo" src="..\assets\images.png" alt="">
               </a>
             </div>
-            
-          
+
+
             <div  class="div-imagen">
               <span class="nombre">{{prod.nombre}}</span>
               <span  class="precio">${{prod.precio}}</span>
@@ -46,19 +46,19 @@
 
           </div>
         </ion-col>
-        
+
 
       </ion-row>
     </ion-grid>
 
 
-    
+
 
 </ion-content>
 
 
 <ion-content class="ion-contenedor" [hidden]="this.rol_user=='2'" >
- 
+
   <h1 style="margin-left: 10px; color: #4C015D; font-weight: bold;">Chat con Usuarios</h1>
   <p style="margin-left: 10px;color: #4C015D">Respondele las inquietudes a tus clientes</p>
   <div *ngIf="usuarios" class="usuarios-admins" >
@@ -69,12 +69,12 @@
     </ion-avatar>
     <ion-label style="margin-left: 10px;">
       <h3>{{user}}</h3>
-      <p>Detail set to true - detail arrow displays on both modes</p>
+      <!-- <p>Detail set to true - detail arrow displays on both modes</p> -->
     </ion-label>
 
   </ion-item>
 
-  
+
 </div>
 
 </ion-content>

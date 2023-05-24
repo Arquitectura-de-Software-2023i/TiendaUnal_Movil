@@ -107,6 +107,8 @@ export class RegisterComponent implements OnInit {
     .subscribe((result:any) => {
       this.presentAlert()
       localStorage.setItem("userID", result.data?.createUser.idUsuario );
+      localStorage.setItem("Rol", result.data?.createUser.idRol );
+
       this.router.navigate(['/home'])
 
 
