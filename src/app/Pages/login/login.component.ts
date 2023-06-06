@@ -92,4 +92,9 @@ export class LoginComponent implements OnInit {
     await toast.present();
   }
 
+  invitado(){
+
+    this.router.navigate(['/login-invitado'])
+
+  }
 }

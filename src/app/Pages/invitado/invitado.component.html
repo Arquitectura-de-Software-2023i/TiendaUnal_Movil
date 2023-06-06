@@ -1,0 +1,29 @@
+<body>
+  <div class="padre">
+      <div>
+          <div style="text-align: center">
+              <img class="imagen-fondo" src="..\assets\fondo.png" alt="">
+          </div>
+          <form metod="post" action="" style="margin-top: 16%; ">
+  
+              <div>
+                  <p class="letra" style="margin-left: 10%; " >E-mail</p>
+                  <input style="padding: 20px;" name="username" id = "username" [(ngModel)]="usuario.Email" class="button-log" placeholder="Usuario@Unal.edu.co" type="text">
+              </div>
+  
+              
+              <input (click)="login()" type="submit"class="btn-ingreso" value="Ingresar">
+              
+  
+          </form>
+  
+          <div style="text-align: center; margin-top:5%">
+              <p style="color: white;">¿No tienes cuenta? <a href="/register" class="letra">Registrate</a></p>
+          </div>
+
+
+
+      </div>
+  </div>
+
+</body>

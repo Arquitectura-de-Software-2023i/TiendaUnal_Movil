@@ -7,15 +7,15 @@
   </ion-tab-button>
 
 
-  <ion-tab-button [hidden]="this.rol_user=='1'" [routerLink]="['/carrito']">
+  <ion-tab-button [hidden]="this.rol_user=='1' || this.rol_user == 'NoRol'" [routerLink]="['/carrito']">
     <ion-icon style="font-size: 6em; " [routerLinkActive]="['activo']" name="cart"></ion-icon>
   </ion-tab-button>
 
-  <ion-tab-button  [hidden]="this.rol_user=='1'" [routerLink]="['/envios', getUserIDDataFromLocalStorage()]">
+  <ion-tab-button  [hidden]="this.rol_user=='1' || this.rol_user == 'NoRol'" [routerLink]="['/envios', getUserIDDataFromLocalStorage()]">
     <ion-icon style="font-size: 6em;" [routerLinkActive]="['activo']" name="cube-outline"></ion-icon>
   </ion-tab-button>
 
-  <ion-tab-button  [hidden]="this.rol_user=='2'" [routerLink]="['/envios-admin']">
+  <ion-tab-button  [hidden]="this.rol_user=='2' || this.rol_user == 'NoRol'" [routerLink]="['/envios-admin']">
     <ion-icon style="font-size: 6em;" [routerLinkActive]="['activo']" name="cube-outline"></ion-icon>
   </ion-tab-button>
 

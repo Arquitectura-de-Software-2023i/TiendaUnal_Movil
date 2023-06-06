@@ -21,6 +21,7 @@ import {UserProfileComponent} from './user-profile/user-profile.component';
 import {EnviosAdminComponent} from './envios-admin/envios-admin.component';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { ChatAdminComponent } from './chat-admin/chat-admin.component';
+import { InvitadoComponent } from './invitado/invitado.component';
 
 register();
 
@@ -36,7 +37,8 @@ register();
     UserProfileComponent,
     EnviosAdminComponent,  
     CategoriasComponent,
-    ChatAdminComponent
+    ChatAdminComponent,
+    InvitadoComponent
   ],
   imports: [
     CommonModule,

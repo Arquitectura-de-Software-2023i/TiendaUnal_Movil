@@ -26,18 +26,29 @@
     </div>
 
 
-    <ion-item [hidden]="this.rol_user=='1'" [routerLink]="['/carrito']">
+    <div class="userinfo-container">      
+
+      <h1 class="infousuario-title" style="color:#4C015D"> 
+        <ion-icon name="person"></ion-icon>
+       Accediste como invitado, para realizar compras crea una cuenta!
+      </h1>
+      
+  </div>
+
+
+
+    <ion-item [hidden]="this.rol_user=='1' || this.rol_user == 'NoRol'" [routerLink]="['/carrito']">
       <ion-icon style="font-size: 3em;" name="cart"  slot="start"></ion-icon>
       <ion-label class="label-menu">Carrito</ion-label>
     </ion-item>
 
-    <ion-item  [routerLink]="['/envios', getUserIDDataFromLocalStorage()]">
+    <ion-item [hidden]="this.rol_user == 'NoRol'"  [routerLink]="['/envios',  getUserIDDataFromLocalStorage()]">
       <ion-icon style="font-size: 3em;" name="cube-outline" slot="start" ></ion-icon>
       <ion-label class="label-menu">Mis envios</ion-label>
     </ion-item>
 
     
-    <ion-item [hidden]="this.rol_user=='1'" [routerLink]="['/chat']">
+    <ion-item [hidden]="this.rol_user=='1'|| this.rol_user == 'NoRol'" [routerLink]="['/chat']">
       <ion-icon style="font-size: 3em;" name="chatbubbles"slot="start" ></ion-icon>
       <ion-label class="label-menu">Chat de ayuda</ion-label>
     </ion-item>

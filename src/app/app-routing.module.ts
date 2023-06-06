@@ -12,13 +12,21 @@ import {UserProfileComponent} from './Pages/user-profile/user-profile.component'
 import {EnviosAdminComponent} from './Pages/envios-admin/envios-admin.component';
 import { CategoriasComponent } from './Pages/categorias/categorias.component';
 import { ChatAdminComponent } from './Pages/chat-admin/chat-admin.component';
+import { InvitadoComponent } from './Pages/invitado/invitado.component';
 
 const routes: Routes = [
+
+
+  {
+    path: 'login-invitado',
+    component: InvitadoComponent
+  },
 
   {
     path: 'categoria',
     component: CategoriasComponent
   },
+
   {
     path: 'carrito',
     component: CarritoComponent
